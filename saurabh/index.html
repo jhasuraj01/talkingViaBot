@@ -35,9 +35,15 @@
         window.onload = function () {
             currentState('typing...');
             setTimeout(() => {
-                Write('Hey Chhakhna Man');
+                Write('Aur Gibbo kaisa hai!😏');
             }, 2000);
-            setTimeout(() => { Write('Wish You Many Many Returns of the DAY 🎂🎂🎂🎂'); }, 4500); setTimeout(() => { Write('I wish God will teach you to keep Your Chhakhna secure😉'); }, 8500); setTimeout(() => { Write('😂😂😂😂'); currentState('online'); }, 10000);
+            setTimeout(() => {
+                Write('Aaj tera kaatne ka bohot man kar raha hai....!😆');
+            }, 4000);
+            setTimeout(() => {
+                Write('Ek help Chahiye Kya.....?😎😎');
+                currentState('online');
+            }, 7000);
         };
 
         function currentState(str) { document.querySelector('.state').innerText = str; };
@@ -48,49 +54,89 @@
             let input_field = $('#userInput');
             $('#chat-bottom').before(`<p class="my-message message">${input_field.val()}<span class="message-time">${Time()}</span></p>`);
             input_field.val('');
+
             numberOfInput++;
+
             if (numberOfInput === 1) {
                 setTimeout(() => {
                     currentState('typing...');
                 }, 1000);
                 setTimeout(() => {
-                    Write('Bro yahaan kuch mat likh, ye message mujhe pata nhi chalega');
+                    Write('bsdk lele help lawde..!');
+                }, 3000);
+                setTimeout(() => {
+                    Write('maine kal jonny uncle ko bohot request kiya, ki kaise bhi saurab ko star bana do.... mera dost hai vo🤩🤩');
+                }, 8000);
+                setTimeout(() => {
+                    Write('usne tera address manga mere se!😉');
+                }, 16000);
+                setTimeout(() => {
+                    Write('Aaj John Bhai tere ghar pe aane wala hai....!😜😜😜');
                     currentState('online');
-                }, 6000);
+                }, 20000);
             }
             else if (numberOfInput === 2) {
                 setTimeout(() => {
                     currentState('typing...');
                 }, 1000);
                 setTimeout(() => {
-                    Write('Tu nhi sudhre ga! GM');
-                }, 4000);
+                    Write('Abe lawde xvideos pe terko trend karwaa dega, chutiye!');
+                }, 3000);
                 setTimeout(() => {
-                    Write('😜😜😜');
+                    Write('tere ghar pe tujhe personally bio padhaega...😀😀😀');
+                }, 7000);
+                setTimeout(() => {
+                    Write('🤣🤣🤣🤣🤣');
                     currentState('online');
-                }, 5500);
-            } else if (numberOfInput === 3) {
+                }, 9000);
+            }else if (numberOfInput === 3) {
                 setTimeout(() => {
                     currentState('typing...');
                 }, 1000);
                 setTimeout(() => {
-                    Write('Khamosh..!');
-                    currentState('online');
+                    Write('Chal bye mujhe kaam hai😏');
                 }, 3000);
-            } else {
+                setTimeout(() => {
+                    Write('Tu enjoy kar aaj... vo Aa jaaega😍😍');
+                }, 7000);
+                setTimeout(() => {
+                    Write('👋👋');
+                    currentState('online');
+                }, 9000);
                 setTimeout(() => {
                     currentState('last seen today at ' + Time());
-                }, 4000);
+                }, 12000);
+            } else if (numberOfInput === 4) {
+                setTimeout(() => {
+                    currentState('online');
+                }, 1000);
+                setTimeout(() => {
+                    currentState('typing...');
+                }, 3000);
+                setTimeout(() => {
+                    Write('abe Chutiye mai suraj nhi hu, jo to itna excited ho raha hai, I am a simple robot created by him...!');
+                }, 6000);
+                setTimeout(() => {
+                    Write('😏😏😏😏😏😏😏');
+                }, 10000);
+                setTimeout(() => {
+                    Write('Chal watt👊👊');
+                    currentState('online');
+                }, 12000);
+                setTimeout(() => {
+                    currentState('last seen today at ' + Time());
+                }, 14000);
             };
         };
+
         function Time() {
             let date = new Date();
             let time;
             if (date.getHours() > 12) {
-                time = `${('00' + (date.getHours() - 12)).substr(-2)}:${('00' + date.getMinutes()).substr(-2)}&nbsp;pm`;
+                time = `${('00' + (date.getHours() - 12)).substr(-2)}:${('00' + date.getMinutes()).substr(-2)} pm`;
                 return time;
             };
-            time = `${('00' + date.getHours()).substr(-2)}:${('00' + date.getMinutes()).substr(-2)}&nbsp;am`;
+            time = `${('00' + date.getHours()).substr(-2)}:${('00' + date.getMinutes()).substr(-2)} am`;
             return time;
         };
         function Write(message) {
