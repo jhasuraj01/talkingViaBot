@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<!-- This is a reference file to copy and paste code structure from here such that new file for new persone can be easily created -->
 
 <head>
     <meta charset="utf-8" />
@@ -250,10 +251,19 @@
     </div>
     <div class="chat-body">
         <div id="chat-bottom" style="clear: both;"></div>
-    </div><label for="userInput" id="input-container"> <input id="userInput" placeholder="Type a message"> <a
-            href="#chat-bottom"> <button id="putUserInput" onclick="put_user_Input()"> <svg fill='white'>
-                    <polyline points="0,0 2,11 18,13 2,15 0,26 26,13" /> </svg> </button> </a> </label>
+    </div>
+    <label for="userInput" id="input-container">
+        <input id="userInput" placeholder="Type a message">
+        <a href="#chat-bottom">
+            <button id="putUserInput" onclick="put_user_Input()">
+                <svg fill='white'>
+                    <polyline points="0,0 2,11 18,13 2,15 0,26 26,13" /></svg>
+            </button>
+        </a>
+    </label>
     <script>
+
+        /* tasks will start performing only when the whole document is loaded properly */
         window.onload = function () {
             currentState('typing...');
             setTimeout(() => {
@@ -262,10 +272,15 @@
             setTimeout(() => { Write('Wish You Many Many Returns of the DAY 🎂🎂🎂🎂'); }, 4500); setTimeout(() => { Write('I wish God will teach you to keep Your Chhakhna secure😉'); }, 8500); setTimeout(() => { Write('😂😂😂😂'); currentState('online'); }, 10000);
         };
 
+        /*
+        This function is used to set the current status of the Bot replying
+        Eg. Online, writing, last seen, etc 
+        */
         function currentState(str) { document.querySelector('.state').innerText = str; };
 
         let numberOfInput = 0;
 
+        /* this function will be called each time when used sends some message*/
         function put_user_Input() {
             let input_field = $('#userInput');
             $('#chat-bottom').before(`<p class="my-message message">${input_field.val()}<span class="message-time">${Time()}</span></p>`);
@@ -279,8 +294,7 @@
                     Write('Bro yahaan kuch mat likh, ye message mujhe pata nhi chalega');
                     currentState('online');
                 }, 6000);
-            }
-            else if (numberOfInput === 2) {
+            } else if (numberOfInput === 2) {
                 setTimeout(() => {
                     currentState('typing...');
                 }, 1000);
@@ -305,6 +319,8 @@
                 }, 4000);
             };
         };
+
+        /* the below function is used to get output of the current time in a form of string */
         function Time() {
             let date = new Date();
             let time;
@@ -315,6 +331,8 @@
             time = `${('00' + date.getHours()).substr(-2)}:${('00' + date.getMinutes()).substr(-2)}&nbsp;am`;
             return time;
         };
+
+        /* This function is used to write a new message in the chat box */
         function Write(message) {
             $('#chat-bottom').before(`<p class="friends-message message">${message}<span class="message-time">${Time()}</span></p>`);
             document.querySelector('#chat-bottom').scrollIntoView();
