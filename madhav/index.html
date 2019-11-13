@@ -1,1 +1,172 @@
-<!DOCTYPE html><html><head><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Madhav ka Chutiya kaatna</title><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="../main.css"> <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script> </head><body><div class="background"></div><div class="chat-header"><div class="user-profile"></div><div class="user-name">Suraj</div><div class="state">online</div><button class="menu-dots">&#x22EE;</button><div class="menu"><p>View contact</p><p>Media</p><p>Search</p><p>Mute Notification</p><p>Wallpaper</p><p> <span class='more'>More</span> <span class='more-symbol'>&#x25BA;</span></p></div></div><div class="chat-body"><div id="chat-bottom" style="clear: both;"></div></div><label for="userInput" id="input-container"> <input id="userInput" placeholder="Type a message"> <a href="#chat-bottom"> <button id="putUserInput" onclick="put_user_Input()"> <svg fill='white'> <polyline points="0,0 2,11 18,13 2,15 0,26 26,13" /> </svg> </button> </a> </label> <script>window.onload=function(){currentState('typing...');setTimeout(()=>{Write('Aur Chickne kaisa hai!😏');},2000);setTimeout(()=>{Write('Aaj tera kaatne ka bohot man kar raha hai....!😆');},4000);setTimeout(()=>{Write('Ek help Chahiye Kya.....?😎😎');currentState('online');},7000);};function currentState(str){document.querySelector('.state').innerText=str;};let numberOfInput=0;function put_user_Input(){let input_field=$('#userInput');$('#chat-bottom').before(`<p class="my-message message">${input_field.val()}<span class="message-time">${Time()}</span></p>`);input_field.val('');numberOfInput++;if(numberOfInput===1){setTimeout(()=>{currentState('typing...');},1000);setTimeout(()=>{Write('bsdk lele help lawde..!');},3000);setTimeout(()=>{Write('maine kal jonny uncle ko bohot request kiya, ki kaise bhi madhav ko star bana do.... mera dost hai vo🤩🤩');},8000);setTimeout(()=>{Write('usne tera address manga mere se!😉');},16000);setTimeout(()=>{Write('Aaj John Bhai tere ghar pe aane wala hai....!😜😜😜');currentState('online');},20000);} else if(numberOfInput===2){setTimeout(()=>{currentState('typing...');},1000);setTimeout(()=>{Write('Abe lawde xvideos pe terko trend karwaa dega, chutiye!');},3000);setTimeout(()=>{Write('tere ghar pe tujhe personally momentum conservation padhaega...😀😀😀');},7000);setTimeout(()=>{Write('🤣🤣🤣🤣🤣');currentState('online');},9000);}else if(numberOfInput===3){setTimeout(()=>{currentState('typing...');},1000);setTimeout(()=>{Write('Chal bye mujhe kaam hai😏');},3000);setTimeout(()=>{Write('Tu enjoy kar aaj... vo Aa jaaega😍😍');},7000);setTimeout(()=>{Write('👋👋');currentState('online');},9000);setTimeout(()=>{currentState('last seen today at '+Time());},12000);}else if(numberOfInput===4){setTimeout(()=>{currentState('online');},1000);setTimeout(()=>{currentState('typing...');},3000);setTimeout(()=>{Write('abe Chutiye mai suraj nhi hu, jo to itna excited ho raha hai, I am a simple robot created by him...!');},6000);setTimeout(()=>{Write('😏😏😏😏😏😏😏');},10000);setTimeout(()=>{Write('Chal watt👊👊');currentState('online');},12000);setTimeout(()=>{currentState('last seen today at '+Time());},14000);};};function Time(){let date=new Date();let time;if(date.getHours()>12){time=`${('00'+(date.getHours()-12)).substr(-2)}:${('00'+date.getMinutes()).substr(-2)} pm`;return time;};time=`${('00'+date.getHours()).substr(-2)}:${('00'+date.getMinutes()).substr(-2)} am`;return time;};function Write(message){$('#chat-bottom').before(`<p class="friends-message message">${message}<span class="message-time">${Time()}</span></p>`);document.querySelector('#chat-bottom').scrollIntoView();};</script> </body></html>
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <title>Madhav ka Chutiya kaatna</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="stylesheet" href="../main.css" />
+      <script
+         src="https://code.jquery.com/jquery-3.3.1.js"
+         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+         crossorigin="anonymous"
+      ></script>
+   </head>
+   <body>
+      <div class="background"></div>
+      <div class="chat-header">
+         <div class="user-profile"></div>
+         <div class="user-name">Suraj</div>
+         <div class="state">online</div>
+         <button class="menu-dots">&#x22EE;</button>
+         <div class="menu">
+            <p>View contact</p>
+            <p>Media</p>
+            <p>Search</p>
+            <p>Mute Notification</p>
+            <p>Wallpaper</p>
+            <p>
+               <span class="more">More</span>
+               <span class="more-symbol">&#x25BA;</span>
+            </p>
+         </div>
+      </div>
+      <div class="chat-body">
+         <div id="chat-bottom" style="clear: both;"></div>
+      </div>
+      <label for="userInput" id="input-container">
+         <input id="userInput" placeholder="Type a message" />
+         <a href="#chat-bottom">
+            <button id="putUserInput" onclick="put_user_Input()">
+               <svg fill="white">
+                  <polyline points="0,0 2,11 18,13 2,15 0,26 26,13" />
+               </svg>
+            </button>
+         </a>
+      </label>
+      <script>
+         window.onload = function() {
+            currentState("typing...");
+            setTimeout(() => {
+               Write("Aur Chickne kaisa hai!😏");
+            }, 2000);
+            setTimeout(() => {
+               Write("Aaj tera kaatne ka bohot man kar raha hai....!😆");
+            }, 4000);
+            setTimeout(() => {
+               Write("Ek help Chahiye Kya.....?😎😎");
+               currentState("online");
+            }, 7000);
+         };
+         function currentState(str) {
+            document.querySelector(".state").innerText = str;
+         }
+         let numberOfInput = 0;
+         function put_user_Input() {
+            let input_field = $("#userInput");
+            $("#chat-bottom").before(
+               `<p class="my-message message">${input_field.val()}<span class="message-time">${Time()}</span></p>`
+            );
+            input_field.val("");
+            numberOfInput++;
+            if (numberOfInput === 1) {
+               setTimeout(() => {
+                  currentState("typing...");
+               }, 1000);
+               setTimeout(() => {
+                  Write("bsdk lele help lawde..!");
+               }, 3000);
+               setTimeout(() => {
+                  Write(
+                     "maine kal jonny uncle ko bohot request kiya, ki kaise bhi madhav ko star bana do.... mera dost hai vo🤩🤩"
+                  );
+               }, 8000);
+               setTimeout(() => {
+                  Write("usne tera address manga mere se!😉");
+               }, 16000);
+               setTimeout(() => {
+                  Write("Aaj John Bhai tere ghar pe aane wala hai....!😜😜😜");
+                  currentState("online");
+               }, 20000);
+            } else if (numberOfInput === 2) {
+               setTimeout(() => {
+                  currentState("typing...");
+               }, 1000);
+               setTimeout(() => {
+                  Write(
+                     "Abe lawde xvideos pe terko trend karwaa dega, chutiye!"
+                  );
+               }, 3000);
+               setTimeout(() => {
+                  Write(
+                     "tere ghar pe tujhe personally momentum conservation padhaega...😀😀😀"
+                  );
+               }, 7000);
+               setTimeout(() => {
+                  Write("🤣🤣🤣🤣🤣");
+                  currentState("online");
+               }, 9000);
+            } else if (numberOfInput === 3) {
+               setTimeout(() => {
+                  currentState("typing...");
+               }, 1000);
+               setTimeout(() => {
+                  Write("Chal bye mujhe kaam hai😏");
+               }, 3000);
+               setTimeout(() => {
+                  Write("Tu enjoy kar aaj... vo Aa jaaega😍😍");
+               }, 7000);
+               setTimeout(() => {
+                  Write("👋👋");
+                  currentState("online");
+               }, 9000);
+               setTimeout(() => {
+                  currentState("last seen today at " + Time());
+               }, 12000);
+            } else if (numberOfInput === 4) {
+               setTimeout(() => {
+                  currentState("online");
+               }, 1000);
+               setTimeout(() => {
+                  currentState("typing...");
+               }, 3000);
+               setTimeout(() => {
+                  Write(
+                     "abe Chutiye mai suraj nhi hu, jo to itna excited ho raha hai, I am a simple robot created by him...!"
+                  );
+               }, 6000);
+               setTimeout(() => {
+                  Write("😏😏😏😏😏😏😏");
+               }, 10000);
+               setTimeout(() => {
+                  Write("Chal watt👊👊");
+                  currentState("online");
+               }, 12000);
+               setTimeout(() => {
+                  currentState("last seen today at " + Time());
+               }, 14000);
+            }
+         }
+         function Time() {
+            let date = new Date();
+            let time;
+            if (date.getHours() > 12) {
+               time = `${("00" + (date.getHours() - 12)).substr(-2)}:${(
+                  "00" + date.getMinutes()
+               ).substr(-2)} pm`;
+               return time;
+            }
+            time = `${("00" + date.getHours()).substr(-2)}:${(
+               "00" + date.getMinutes()
+            ).substr(-2)} am`;
+            return time;
+         }
+         function Write(message) {
+            $("#chat-bottom").before(
+               `<p class="friends-message message">${message}<span class="message-time">${Time()}</span></p>`
+            );
+            document.querySelector("#chat-bottom").scrollIntoView();
+         }
+      </script>
+   </body>
+</html>
