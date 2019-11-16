@@ -19,13 +19,15 @@
             Write your friends nick name:
             <input type="text" name="friendname-in" id="friendname-in" placeholder="Write nick name of your friend">
         </label>
+        <!-- <a href="#" target="_blank" rel="noopener noreferrer" id="viewDemo_btn">View Demo</a> -->
+        <button id="viewDemo_btn">View Demo</button>
         <button id="copyURL-btn">COPY URL</button>
         <p id="url-copy-alert" style="text-align: center;"></p>
     </main>
     <label for="url-in">
         <input type="text" name="url-in" id="url-in" style="position: absolute; top: 0; left: 0; display: none;">
     </label>
-    
+
     <script src="../encrypt.js"></script>
     <script>
         let url_in = document.getElementById('url-in');
@@ -42,7 +44,7 @@
             let encrypted_friendname = encrypt(friendname_in.value, friendname_encryption_key);
 
             let url = new URL(`https://the-suraj.github.io/talkingViaBot/?fn=${encrypted_username}&un=${encrypted_friendname}`);
-            url_in.value = url;
+            url_in.value = url.href;
             url_in.style.display = "block";
             url_in.select();
             document.execCommand('copy');
@@ -57,6 +59,13 @@
         }
         document.getElementById('username-in').addEventListener('input', remove_text_url_copy_alert);
         document.getElementById('friendname-in').addEventListener('input', remove_text_url_copy_alert);
+
+        let popitup = (url, windowName) => {
+            newwindow = window.open(new URL(url_in.value), windowName, 'height=500,width=320');
+            if (window.focus) { newwindow.focus() }
+            return false;
+        }
+        document.getElementById('viewDemo_btn').addEventListener('click', popitup);
     </script>
 </body>
 
