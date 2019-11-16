@@ -9,14 +9,13 @@
    <link rel="stylesheet" href="../main.css" />
    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
       crossorigin="anonymous"></script>
-   <script src="./encrypt.js"></script>
 </head>
 
 <body>
    <div class="background"></div>
    <div class="chat-header">
       <div class="user-profile"></div>
-      <div class="user-name">Suraj</div>
+      <div class="user-name" id="user-name">Friend</div>
       <div class="state">online</div>
       <button class="menu-dots">&#x22EE;</button>
       <div class="menu">
@@ -44,22 +43,36 @@
          </button>
       </a>
    </label>
+   <script src="./encrypt.js"></script>
    <script>
-      var name = null;
+      var username = null;
       window.onload = function () {
          // getting name via url i.e www.example.com?name=friend
          // task to get 'friend' as name from title
          // Using URL Class to find the value of the property in url.
          let params = (new URL(location.href)).searchParams;
-         if (params.get('name')) {
-            name = params.get('name');
+
+         // user
+         if (params.get('un')) {
+            encrypted_username = params.get('un');
+            let username_encryption_key = encrypted_username.length % 26 > 3 ? encrypted_username.length : 10;
+            username = decrypt(encrypted_username, username_encryption_key);
+
          } else {
-            name = "dost";
+            username = "buddy";
+         }
+
+         // sender
+         if (params.get('fn')) {
+            encrypted_friendname = params.get('fn');
+            let friendname_encryption_key = encrypted_friendname.length % 26 > 3 ? encrypted_friendname.length : 10;
+            document.getElementById('user-name').innerText = decrypt(encrypted_friendname, friendname_encryption_key);
+            // console.log(document.getElementById("user-name"));
          }
 
          currentState("typing...");
          setTimeout(() => {
-            Write("Aur " + name + " kaisa hai!😏");
+            Write("Aur " + username + " kaisa hai!😏");
          }, 2000);
          setTimeout(() => {
             Write("Aaj tera kaatne ka bohot man kar raha hai....!😆");

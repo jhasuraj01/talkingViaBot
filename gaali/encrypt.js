@@ -1,12 +1,9 @@
-let str = "+ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-console.log(str);
 let caesarCipher = (str, key = 0) => {
     let encryptedText = "";
 
     for (let i = 0; i < str.length; i++) {
         const char = str[i];
-        // A -> 65 & a -> 97
-        // Z -> 90 & z -> 122
+        // A -> 65 & a -> 97 & Z -> 90 & z -> 122
         let charCode = char.charCodeAt(0);
         let newCharCode;
         if (65 <= charCode && charCode <= 90) {
@@ -37,13 +34,8 @@ let caesarCipher = (str, key = 0) => {
             newCharCode = charCode;
         }
         encryptedText += String.fromCharCode(newCharCode);
-        console.log(`charcode: ${charCode} => ${char}, newCharCode: ${newCharCode} => ${String.fromCharCode(newCharCode)}`);
     };
     return encryptedText;
 };
-let encrypt = (str) => caesarCipher(str, 1);
-let decrypt = (str) => caesarCipher(str, -1);
-// console.log(encrypt(str));
-console.log(decrypt(str));
-
-
+let encrypt = (str, key) => caesarCipher(str, key);
+let decrypt = (str, key) => caesarCipher(str, -key);
