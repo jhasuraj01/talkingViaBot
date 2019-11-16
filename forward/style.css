@@ -1,6 +1,39 @@
 :root {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: large;
+    animation: change_bgc 20s linear infinite;
+}
+@keyframes change_bgc {
+    0%, 100% {
+        background-color: #fff;
+    }
+    10% {
+        background-color: rgb(255, 235, 235);
+    }
+    20% {
+        background-color: rgb(255, 245, 235);
+    }
+    30% {
+        background-color: rgb(255, 252, 235);
+    }
+    40% {
+        background-color: rgb(246, 255, 235);
+    }
+    50% {
+        background-color: rgb(236, 255, 235);
+    }
+    60% {
+        background-color: rgb(235, 255, 254);
+    }
+    70% {
+        background-color: rgb(235, 239, 255);
+    }
+    80% {
+        background-color: rgb(255, 235, 255);
+    }
+    90% {
+        background-color: rgb(255, 235, 235);
+    }
 }
 main label {
     box-sizing: border-box;
@@ -19,6 +52,7 @@ main label input {
     font-size: inherit;
     font-family: inherit;
     border-bottom: 0.25em rgb(0, 225, 255) solid;
+    background: transparent;
 }
 main label input:focus {
     transition: 0.3s border ease;
@@ -31,7 +65,8 @@ main button {
     padding: 1em 2em;
     font-size: inherit;
     font-family: inherit;
-    border: none;
+    border: 0.14rem blue solid;
     outline: none;
     border-radius: 1em;
+    background: transparent;
 }
