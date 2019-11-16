@@ -1,7 +1,7 @@
 :root {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: large;
-    animation: change_bgc 20s linear infinite;
+    animation: change_bgc 60s linear infinite;
 }
 @keyframes change_bgc {
     0%, 100% {
