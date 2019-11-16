@@ -19,13 +19,13 @@
         <input type="text" name="friendname-in" id="friendname-in" placeholder="Write nick name of your friend">
     </label>
     <button id="copyURL-btn">COPY URL</button>
-
+    <p id="url-copy-alert" style="text-align: center;"></p>
     <script src="../encrypt.js"></script>
     <script>
         let url_in = document.getElementById('url-in');
         let friendname_in = document.getElementById('friendname-in');
         let username_in = document.getElementById('username-in');
-
+        let url_copy_alert = document.getElementById('url-copy-alert');
         let copyURLFn = () => {
             /* encrypt Your Name */
             let username_encryption_key = username_in.value.length % 26 > 3 ? username_in.value.length : 10;
@@ -41,9 +41,16 @@
             url_in.select();
             document.execCommand('copy');
             url_in.style.display = "none";
+            url_copy_alert.innerText = "Url Copied";
             return null;
         }
         document.getElementById("copyURL-btn").addEventListener("click", copyURLFn);
+
+        let remove_text_url_copy_alert = () => {
+            url_copy_alert.innerText = "";
+        }
+        document.getElementById('username-in').addEventListener('input', remove_text_url_copy_alert);
+        document.getElementById('friendname-in').addEventListener('input', remove_text_url_copy_alert);
     </script>
 </body>
 
