@@ -1,0 +1,26 @@
+:root {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+main label {
+    display: block;
+    margin: 2rem 0;
+}
+main label input {
+    box-sizing: border-box;
+    display: block;
+    width: 90%;
+    margin: 0.5rem auto;
+    padding: 0.3rem;
+    border: none;
+    outline: none;
+    border-bottom: 0.2rem blue solid;
+}
+main button {
+    box-sizing: border-box;
+    display: block;
+    margin: 0.5rem auto;
+    padding: 1rem 2rem;
+    border: none;
+    outline: none;
+    border-radius: 1rem;
+}

@@ -6,20 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Forward to friends</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
+    <main>
+        <label for="username-in">
+            Write your name:
+            <input type="text" name="username-in" id="username-in" placeholder="Write your name">
+        </label>
+        <label for="friendname-in">
+            Write your friends nick name:
+            <input type="text" name="friendname-in" id="friendname-in" placeholder="Write nick name of your friend">
+        </label>
+        <button id="copyURL-btn">COPY URL</button>
+        <p id="url-copy-alert" style="text-align: center;"></p>
+    </main>
     <label for="url-in">
         <input type="text" name="url-in" id="url-in" style="position: absolute; top: 0; left: 0; display: none;">
     </label>
-    <label for="username-in">
-        <input type="text" name="username-in" id="username-in" placeholder="Write your name">
-    </label>
-    <label for="friendname-in">
-        <input type="text" name="friendname-in" id="friendname-in" placeholder="Write nick name of your friend">
-    </label>
-    <button id="copyURL-btn">COPY URL</button>
-    <p id="url-copy-alert" style="text-align: center;"></p>
+    
     <script src="../encrypt.js"></script>
     <script>
         let url_in = document.getElementById('url-in');
