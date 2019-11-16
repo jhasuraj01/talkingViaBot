@@ -34,7 +34,9 @@
         let friendname_in = document.getElementById('friendname-in');
         let username_in = document.getElementById('username-in');
         let url_copy_alert = document.getElementById('url-copy-alert');
-        let copyURLFn = () => {
+        let url = new URL(`https://the-suraj.github.io/talkingViaBot/`);
+
+        let create_url = () => {
             /* encrypt Your Name */
             let username_encryption_key = username_in.value.length % 26 > 3 ? username_in.value.length : 10;
             let encrypted_username = encrypt(username_in.value, username_encryption_key);
@@ -43,7 +45,12 @@
             let friendname_encryption_key = friendname_in.value.length % 26 > 3 ? friendname_in.value.length : 10;
             let encrypted_friendname = encrypt(friendname_in.value, friendname_encryption_key);
 
-            let url = new URL(`https://the-suraj.github.io/talkingViaBot/?fn=${encrypted_username}&un=${encrypted_friendname}`);
+            // set parameters
+            url.search = `fn=${encrypted_username}&un=${encrypted_friendname}`;
+            return null;
+        }
+        let copyURLFn = () => {
+            create_url();
             url_in.value = url.href;
             url_in.style.display = "block";
             url_in.select();
@@ -60,8 +67,10 @@
         document.getElementById('username-in').addEventListener('input', remove_text_url_copy_alert);
         document.getElementById('friendname-in').addEventListener('input', remove_text_url_copy_alert);
 
-        let popitup = (url, windowName) => {
-            newwindow = window.open(new URL(url_in.value), windowName, 'height=500,width=320');
+        let popitup = () => {
+            create_url();
+            let windowName = "chat Box"
+            newwindow = window.open(url, windowName, `height=500,width=300`);
             if (window.focus) { newwindow.focus() }
             return false;
         }
