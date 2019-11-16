@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Forward to friends</title>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
     </label>
     <button id="copyURL-btn">COPY URL</button>
 
-    <script src="./encrypt.js"></script>
+    <script src="../encrypt.js"></script>
     <script>
         let url_in = document.getElementById('url-in');
         let friendname_in = document.getElementById('friendname-in');
@@ -35,7 +35,7 @@
             let friendname_encryption_key = friendname_in.value.length % 26 > 3 ? friendname_in.value.length : 10;
             let encrypted_friendname = encrypt(friendname_in.value, friendname_encryption_key);
 
-            let url = new URL(`https://the-suraj.github.io/talkingViaBot/gaali/?fn=${encrypted_username}&un=${encrypted_friendname}`);
+            let url = new URL(`https://the-suraj.github.io/talkingViaBot/?fn=${encrypted_username}&un=${encrypted_friendname}`);
             url_in.value = url;
             url_in.style.display = "block";
             url_in.select();
