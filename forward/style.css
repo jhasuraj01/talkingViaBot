@@ -2,7 +2,7 @@
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: large;
-    animation: change_bgc 120s linear infinite;
+    animation: change_bgc 30s linear infinite;
 }
 @keyframes change_bgc {
     0%, 100% {
