@@ -45,7 +45,8 @@
    </label>
    <script src="./encrypt.js"></script>
    <script>
-      var username = null;
+      let username = null;
+      let friendname = null;
       window.onload = function () {
          // getting name via url i.e www.example.com?name=friend
          // task to get 'friend' as name from title
@@ -66,7 +67,7 @@
          if (params.get('fn')) {
             encrypted_friendname = params.get('fn');
             let friendname_encryption_key = encrypted_friendname.length % 26 > 3 ? encrypted_friendname.length : 10;
-            document.getElementById('user-name').innerText = decrypt(encrypted_friendname, friendname_encryption_key);
+            friendname = document.getElementById('user-name').innerText = decrypt(encrypted_friendname, friendname_encryption_key);
             // console.log(document.getElementById("user-name"));
          }
 
@@ -161,7 +162,7 @@
             }, 3000);
             setTimeout(() => {
                Write(
-                  "abe Chutiye mai suraj nhi hu, jo to itna excited ho raha hai, I am a simple robot created by him...!"
+                  "abe Chutiye mai " + friendname + " nhi hu, jo to itna excited ho raha hai, I am a simple robot created by him...!"
                );
             }, 6000);
             setTimeout(() => {
