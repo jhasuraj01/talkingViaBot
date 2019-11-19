@@ -3,6 +3,8 @@ let callback_open_file_btn_clicked = (eve) => {
 }
 
 let WriteMessagesOnScreen = (data) => {
+
+    //alert system for saving current messages
     if (!export_btn) {
         let export_btn = document.getElementById('export-btn');
         alert('save current messages');
@@ -11,6 +13,21 @@ let WriteMessagesOnScreen = (data) => {
         alert('save current messages');
         export_btn.click();
     }
+
+    let msg_set_container = document.getElementById('message-set-Container');
+    msg_set_arr = msg_set_container.children;
+
+    // delete all the messages and refresh the UI
+    for (let set_index = 1; set_index < msg_set_arr.length; set_index++) {
+        const set = msg_set_arr[set_index];
+        set.remove();
+    }
+    msg_in_firstSet_arr = msg_set_arr[0].children;
+    for (let msg_index = 2; msg_index < msg_in_firstSet_arr.length; msg_index++) {
+        const msg_in = msg_in_firstSet_arr[msg_index];
+        msg_in.remove();
+    }
+    msg_in_firstSet_arr[1].value = '';
 }
 
 let open_file_fn = () => {
