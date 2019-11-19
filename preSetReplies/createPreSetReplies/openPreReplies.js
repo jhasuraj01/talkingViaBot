@@ -44,7 +44,7 @@ let WriteMessagesOnScreen = (data) => {
 let open_file_fn = () => {
     if (file_in.value) {
         let file = file_in.files[0];
-
+        document.getElementById('file-name').value = file.name.substring(0, file.name.lastIndexOf('.json'));
         // a reader is set to read the uploaded file.
         let reader = new FileReader();
         reader.onload = (eve) => {

@@ -33,8 +33,9 @@ let downloadFile = (file) => {
 
 let exportReplies = () => {
     let data = create_JSON_replies_data();
+    
     let file = {
-        name: 'example.json',
+        name: document.getElementById('file-name').value + '.json',
         type: 'text/csv',
         data: data
     }
