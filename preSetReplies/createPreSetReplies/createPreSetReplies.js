@@ -29,7 +29,7 @@ let add_msg_set_above_fn = (eve) => {
         last_focused_in.parentNode.previousElementSibling.children[1].focus();
     }
 }
-let add_msg_set_below_fn = (eve) => {
+let add_msg_set_below_fn = () => {
     if (last_focused_in) {
         let element = `
         <fieldset class="message-set">

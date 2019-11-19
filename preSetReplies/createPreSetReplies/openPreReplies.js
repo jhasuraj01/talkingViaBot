@@ -1,10 +1,27 @@
 let callback_open_file_btn_clicked = (eve) => {
     file_in.click();
 }
+let deleteAllMessages = () => {
 
+    let msg_set_container = document.getElementById('message-set-Container');
+    msg_set_arr = msg_set_container.children;
+
+    // delete all the messages and refresh the UI
+    for (let set_index = 1, msg_set_arr_len = msg_set_arr.length; set_index < msg_set_arr_len; set_index++) {
+        msg_set_arr[1].remove(); // since each time we delete the node, the next node will occupy the position of first node
+    }
+    msg_in_firstSet_arr = msg_set_arr[0].children;
+    for (let msg_index = 2, msg_in_firstSet_arr_len = msg_in_firstSet_arr.length; msg_index < msg_in_firstSet_arr_len; msg_index++) {
+        msg_in_firstSet_arr[2].remove();
+    }
+    msg_in_firstSet_arr[1].value = '1';
+    msg_in_firstSet_arr[1].focus();
+    alert('okay');
+
+}
 let WriteMessagesOnScreen = (data) => {
 
-    //alert system for saving current messages
+    // alert system for saving current messages
     if (!export_btn) {
         let export_btn = document.getElementById('export-btn');
         alert('save current messages');
@@ -14,20 +31,17 @@ let WriteMessagesOnScreen = (data) => {
         export_btn.click();
     }
 
-    let msg_set_container = document.getElementById('message-set-Container');
-    msg_set_arr = msg_set_container.children;
-
-    // delete all the messages and refresh the UI
-    for (let set_index = 1; set_index < msg_set_arr.length; set_index++) {
-        const set = msg_set_arr[set_index];
-        set.remove();
+    deleteAllMessages();
+    
+    // now write the messages from data to the screen
+    for (let i = 0; i < data.length; i++) {
+        for (let ii = 0; ii < data[i].length; ii++) {
+            const msg = data[i][ii];
+            last_focused_in.value = msg;
+            if (ii + 1 < data[i].length) add_new_msg_in_below_fn();
+        }
+        if (i + 1 < data.length) add_msg_set_below_fn();
     }
-    msg_in_firstSet_arr = msg_set_arr[0].children;
-    for (let msg_index = 2; msg_index < msg_in_firstSet_arr.length; msg_index++) {
-        const msg_in = msg_in_firstSet_arr[msg_index];
-        msg_in.remove();
-    }
-    msg_in_firstSet_arr[1].value = '';
 }
 
 let open_file_fn = () => {
