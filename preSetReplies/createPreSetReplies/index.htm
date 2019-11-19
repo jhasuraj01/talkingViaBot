@@ -12,7 +12,15 @@
 <body>
     <header>
         <h1>Create Pre Set Replies for Your friend</h1>
+        <label for="file-name">
+            File name:
+            <input type="text" id="file-name">
+        </label>
         <button id="export-btn">EXPORT</button>
+        <label for="open-file-btn" title="Open file from your device" >
+            <button id="open-file-btn" name="open-file-btn">OPEN</button>
+            <input type="file" id="file-in" style="display: none;">
+        </label>
     </header>
     <main>
         <section id="editing-tools">
