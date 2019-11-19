@@ -14,9 +14,8 @@ let deleteAllMessages = () => {
     for (let msg_index = 2, msg_in_firstSet_arr_len = msg_in_firstSet_arr.length; msg_index < msg_in_firstSet_arr_len; msg_index++) {
         msg_in_firstSet_arr[2].remove();
     }
-    msg_in_firstSet_arr[1].value = '1';
+    msg_in_firstSet_arr[1].value = '';
     msg_in_firstSet_arr[1].focus();
-    alert('okay');
 
 }
 let WriteMessagesOnScreen = (data) => {
@@ -24,15 +23,13 @@ let WriteMessagesOnScreen = (data) => {
     // alert system for saving current messages
     if (!export_btn) {
         let export_btn = document.getElementById('export-btn');
-        alert('save current messages');
-        export_btn.click();
+        if(confirm('save current messages')) export_btn.click();
     } else {
-        alert('save current messages');
-        export_btn.click();
+        if(confirm('save current messages')) export_btn.click();
     }
 
     deleteAllMessages();
-    
+
     // now write the messages from data to the screen
     for (let i = 0; i < data.length; i++) {
         for (let ii = 0; ii < data[i].length; ii++) {
