@@ -3,7 +3,14 @@ let callback_open_file_btn_clicked = (eve) => {
 }
 
 let WriteMessagesOnScreen = (data) => {
-    console.log(data);
+    if (!export_btn) {
+        let export_btn = document.getElementById('export-btn');
+        alert('save current messages');
+        export_btn.click();
+    } else {
+        alert('save current messages');
+        export_btn.click();
+    }
 }
 
 let open_file_fn = () => {
