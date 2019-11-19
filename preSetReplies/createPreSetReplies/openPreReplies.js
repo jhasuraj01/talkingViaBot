@@ -20,41 +20,56 @@ let deleteAllMessages = () => {
 }
 let WriteMessagesOnScreen = (data) => {
 
-    // alert system for saving current messages
-    if (!export_btn) {
-        let export_btn = document.getElementById('export-btn');
-        if(confirm('save current messages')) export_btn.click();
-    } else {
-        if(confirm('save current messages')) export_btn.click();
-    }
+    if (data[0].id === 'me5noyjN7YC5C4tKttrbsQw95StTbW680uW7ic32GPdyJR20eejWCZMh42GTsGD8ABGSIvfVodLMKLPGQN5JNZ5dBpijBTLmDNbu') {
 
-    deleteAllMessages();
-
-    // now write the messages from data to the screen
-    for (let i = 0; i < data.length; i++) {
-        for (let ii = 0; ii < data[i].length; ii++) {
-            const msg = data[i][ii];
-            last_focused_in.value = msg;
-            if (ii + 1 < data[i].length) add_new_msg_in_below_fn();
+        // alert system for saving current messages
+        if (!export_btn) {
+            let export_btn = document.getElementById('export-btn');
+            if (confirm('save current messages')) export_btn.click();
+        } else {
+            if (confirm('save current messages')) export_btn.click();
         }
-        if (i + 1 < data.length) add_msg_set_below_fn();
+
+        deleteAllMessages();
+
+        // now write the messages from data to the screen
+        for (let i = 1; i < data.length; i++) {
+            for (let ii = 0; ii < data[i].length; ii++) {
+                const msg = data[i][ii];
+                last_focused_in.value = msg;
+                if (ii + 1 < data[i].length) add_new_msg_in_below_fn();
+            }
+            if (i + 1 < data.length) add_msg_set_below_fn();
+        }
+        return true;
+    } else {
+        console.error('this json file does not contain messages or its data structure is not supported');
+        return false;
     }
+
 }
 
 let open_file_fn = () => {
-    if (file_in.value) {
-        let file = file_in.files[0];
-        document.getElementById('file-name').value = file.name.substring(0, file.name.lastIndexOf('.json'));
+    // if (file_in.files.length > 1) console.warn('multiple files can not be selected at once and hence except first file rest all the files are ignored');
+    let file = file_in.files[0];
+    if (file.type === "application/json") {
+
         // a reader is set to read the uploaded file.
         let reader = new FileReader();
         reader.onload = (eve) => {
             let data = eve.target.result;
-            WriteMessagesOnScreen(JSON.parse(data));
+            if (WriteMessagesOnScreen(JSON.parse(data))) {
+                document.getElementById('file-name').value = file.name.substring(0, file.name.toLowerCase().lastIndexOf('.json'));
+                return true;
+            } else {
+                return false;
+            }
         }
         reader.readAsText(file_in.files[0], "UTF-8");
     }
     else {
-        console.error('no file is selected');
+        console.error('please select a json file');
+        return false;
     }
 }
 let open_file_btn = document.getElementById('open-file-btn');

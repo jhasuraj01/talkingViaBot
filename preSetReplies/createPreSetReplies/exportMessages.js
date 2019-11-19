@@ -1,5 +1,9 @@
 let create_JSON_replies_data = () => {
     let preSeRreplies_arr = [];
+    let file_Configuration = {
+        id: 'me5noyjN7YC5C4tKttrbsQw95StTbW680uW7ic32GPdyJR20eejWCZMh42GTsGD8ABGSIvfVodLMKLPGQN5JNZ5dBpijBTLmDNbu'
+    }
+    preSeRreplies_arr.push(file_Configuration);
     let message_set_Container = document.getElementById('message-set-Container');
 
     // Wanna write the below code using forEach loop
@@ -36,7 +40,7 @@ let exportReplies = () => {
     
     let file = {
         name: document.getElementById('file-name').value + '.json',
-        type: 'text/csv',
+        type: 'application/json',
         data: data
     }
     if(data !== null) downloadFile(file);
