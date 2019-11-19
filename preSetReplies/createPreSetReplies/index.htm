@@ -10,23 +10,29 @@
 </head>
 
 <body>
-    <section id="editing-tools">
-        <button id="add-new-msg-in-above-btn">&plus; message &uparrow;</button>
-        <button id="add-new-msg-in-below-btn">&plus; message &downarrow;</button>
-        <button id="add-msg-set-above-btn">&plus; set &uparrow;</button>
-        <button id="add-msg-set-below-btn">&plus; set &downarrow;</button>
-        <button id="delete-msg-in-btn">&#128465; message</button>
-        <button id="delete-msg-set-btn">&#128465; set</button>
-    </section>
+    <header>
+        <h1>Create Pre Set Replies for Your friend</h1>
+        <button id="export-btn">EXPORT</button>
+    </header>
     <main>
-        <section class="message-set-Container">
+        <section id="editing-tools">
+            <button id="add-new-msg-in-above-btn">&plus; message &uparrow;</button>
+            <button id="add-new-msg-in-below-btn">&plus; message &downarrow;</button>
+            <button id="add-msg-set-above-btn">&plus; set &uparrow;</button>
+            <button id="add-msg-set-below-btn">&plus; set &downarrow;</button>
+            <button id="delete-msg-in-btn">&#128465; message</button>
+            <button id="delete-msg-set-btn">&#128465; set</button>
+        </section>
+        <section id="message-set-Container">
             <fieldset class="message-set">
                 <legend class="message-set-header">Message Set</legend>
                 <input type="text" class="message-input">
             </fieldset>
         </section>
     </main>
+
     <script src="./createPreSetReplies.js"></script>
+    <script src="./exportMessages.js"></script>
 </body>
 
 </html>
