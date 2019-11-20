@@ -50,6 +50,9 @@ let addCatagory = (eve) => {
         }
     }
 
+    // remove text copied alert if it is present there
+    if (typeof remove_text_url_copy_alert === 'function') remove_text_url_copy_alert();
+
     let sub_cat = {
         elm: null,
         level: chat_cat_lbl.children.length + 1
@@ -72,7 +75,7 @@ let addCatagory = (eve) => {
         chat_cat_lbl.insertAdjacentHTML('beforeend', `<select name="chat-catagory-${sub_cat.level}" id="chat-catagory-${sub_cat.level}"></select>`);
         sub_cat.elm = document.getElementById(`chat-catagory-${sub_cat.level}`);
         sub_cat.elm.addEventListener('input', addCatagory);
-
+        sub_cat.elm.insertAdjacentHTML('afterbegin', `<option value="noSelection">Select</option>`);
         for (const key in object) {
             if (object.hasOwnProperty(key)) {
                 const elm = object[key];
