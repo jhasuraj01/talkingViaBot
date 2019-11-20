@@ -19,6 +19,9 @@
             Write your friends nick name:
             <input type="text" name="friendname-in" id="friendname-in" placeholder="Write nick name of your friend">
         </label>
+        <label  id="chat-cat-lbl">
+            Select chat Catagory:
+        </label>
         <!-- <a href="#" target="_blank" rel="noopener noreferrer" id="viewDemo_btn">View Demo</a> -->
         <button id="viewDemo_btn">View Demo</button>
         <button id="copyURL-btn">COPY URL</button>
@@ -28,6 +31,7 @@
         <input type="text" name="url-in" id="url-in" style="position: absolute; top: 0; left: 0; display: none;">
     </label>
 
+    <script src="./chat-cat.js"></script>
     <script src="../encrypt.js"></script>
     <script>
         let url_in = document.getElementById('url-in');
@@ -45,8 +49,13 @@
             let friendname_encryption_key = friendname_in.value.length % 26 > 3 ? friendname_in.value.length : 10;
             let encrypted_friendname = encrypt(friendname_in.value, friendname_encryption_key);
 
+            /* get and encrypt  chat_cat_url_encoding*/
+            let chat_cat_url_encoding = create_chat_cat_url_encoding_fn();
+            let chat_cat_url_encoding_encryption_key = chat_cat_url_encoding.length % 26 > 3 ? chat_cat_url_encoding.length : 10;
+            let encrypted_chat_cat_url_encoding =  encrypt(chat_cat_url_encoding, chat_cat_url_encoding_encryption_key);
+
             // set parameters
-            url.search = `fn=${encrypted_username}&un=${encrypted_friendname}`;
+            url.search = `fn=${encrypted_username}&un=${encrypted_friendname}&ct=${encrypted_chat_cat_url_encoding}`;
             return null;
         }
         let copyURLFn = () => {
