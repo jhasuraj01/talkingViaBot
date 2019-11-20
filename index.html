@@ -73,7 +73,11 @@
          if(params.get('ct')) {
             encrypted_chat_cat_url_encoding = params.get('ct');
             let chat_cat_url_encoding_encryption_key = encrypted_chat_cat_url_encoding.length % 26 > 3 ? encrypted_chat_cat_url_encoding.length : 10;
+<<<<<<< HEAD
             let chat_cat_url_encoding = './preSetReplies' + decrypt(encrypted_chat_cat_url_encoding, chat_cat_url_encoding_encryption_key)
+=======
+            let chat_cat_url_encoding = '/preSetReplies' + decrypt(encrypted_chat_cat_url_encoding, chat_cat_url_encoding_encryption_key)
+>>>>>>> ed78695e562476d0546efa253827ad3bc6322aec
             console.log(chat_cat_url_encoding);
          }
          currentState("typing...");
