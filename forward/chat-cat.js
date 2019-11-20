@@ -102,7 +102,8 @@ let create_chat_cat_url_encoding_fn = () => {
     let chat_Cat_url_encoding = "";
     for (let index = 0, itrn_no = chat_cat_lbl_child.length; index < itrn_no; index++) {
         const sl_elm = chat_cat_lbl_child[index];
-        chat_Cat_url_encoding += `${sl_elm.value}/`;
+        chat_Cat_url_encoding += `/${sl_elm.value}`;
     }
+    chat_Cat_url_encoding += '.json';
     return chat_Cat_url_encoding;
 }
