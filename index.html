@@ -33,13 +33,11 @@
    </div>
    <label for="userInput" id="input-container">
       <input id="userInput" placeholder="Type a message" />
-      <a href="#chat-bottom">
-         <button id="putUserInput" onclick="put_user_Input()">
+         <button id="putUserInput">
             <svg fill="white">
                <polyline points="0,0 2,11 18,13 2,15 0,26 26,13" />
             </svg>
          </button>
-      </a>
    </label>
    <script src="./encrypt.js"></script>
    <script>
@@ -88,9 +86,9 @@
 
       function put_user_Input() {
          let input_field = document.getElementById('userInput');
-         document.getElementById("chat-bottom").insertAdjacentHTML('beforebegin',
-            `<p class="my-message message">${input_field.value}<span class="message-time">${Time()}</span></p>`
-         );
+         let chatBottom = document.getElementById("chat-bottom");
+         chatBottom.insertAdjacentHTML('beforebegin', `<p class="my-message message">${input_field.value}<span class="message-time">${Time()}</span></p>`);
+         chatBottom.scrollIntoView();
          input_field.value = "";
 
          numberOfInput++;
@@ -174,6 +172,10 @@
          }
       }
 
+      
+      document.getElementById('putUserInput').addEventListener('click', put_user_Input);
+      document.getElementById('putUserInput').addEventListener('click', () => {document.getElementById('userInput').focus()});
+      
       function Time() {
          let date = new Date();
          let time;
@@ -189,9 +191,10 @@
          return time;
       }
       function Write(message) {
-         let chatBottom = document.getElementById("chat-bottom")
+         let chatBottom = document.getElementById("chat-bottom");
          chatBottom.insertAdjacentHTML('beforebegin', `<p class="friends-message message">${message}<span class="message-time">${Time()}</span></p>`);
          chatBottom.scrollIntoView();
+         document.getElementById('userInput').focus();
       }
    </script>
 </body>
