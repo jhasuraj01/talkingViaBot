@@ -52,6 +52,7 @@
          xmlhttp.onreadystatechange = () => {
             if (this.readyState == 4 && this.status == 200) {
                let data = JSON.parse(this.responseText);
+               console.log(data);
                if (data.id === "me5noyjN7YC5C4tKttrbsQw95StTbW680uW7ic32GPdyJR20eejWCZMh42GTsGD8ABGSIvfVodLMKLPGQN5JNZ5dBpijBTLmDNbu") {
                   auto_replies_JSON_data = data;
                   console.log(auto_replies_JSON_data);
