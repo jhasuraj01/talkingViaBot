@@ -7,8 +7,6 @@
    <title>Chat Bot</title>
    <meta name="viewport" content="width=device-width, initial-scale=1" />
    <link rel="stylesheet" href="./main.mini.css" />
-   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-      crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -91,11 +89,11 @@
       let numberOfInput = 0;
 
       function put_user_Input() {
-         let input_field = $("#userInput");
-         $("#chat-bottom").before(
-            `<p class="my-message message">${input_field.val()}<span class="message-time">${Time()}</span></p>`
+         let input_field = document.getElementById('userInput');
+         document.getElementById("chat-bottom").insertAdjacentHTML( 'beforebegin',
+            `<p class="my-message message">${input_field.value}<span class="message-time">${Time()}</span></p>`
          );
-         input_field.val("");
+         input_field.value = "";
 
          numberOfInput++;
 
@@ -193,10 +191,9 @@
          return time;
       }
       function Write(message) {
-         $("#chat-bottom").before(
-            `<p class="friends-message message">${message}<span class="message-time">${Time()}</span></p>`
-         );
-         document.querySelector("#chat-bottom").scrollIntoView();
+         let chatBottom = document.getElementById("chat-bottom")
+         chatBottom.insertAdjacentHTML( 'beforebegin', `<p class="friends-message message">${message}<span class="message-time">${Time()}</span></p>`);
+         chatBottom.scrollIntoView();
       }
    </script>
 </body>
