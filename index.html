@@ -53,6 +53,7 @@
                let data = JSON.parse(this.responseText);
                if (data.id === "me5noyjN7YC5C4tKttrbsQw95StTbW680uW7ic32GPdyJR20eejWCZMh42GTsGD8ABGSIvfVodLMKLPGQN5JNZ5dBpijBTLmDNbu") {
                   auto_replies_JSON_data = data;
+                  console.log(auto_replies_JSON_data);
                } else {
                   console.warn('incorect data downloaded');
                }
@@ -66,7 +67,7 @@
          xmlhttp.send();
 
 
-         auto_replies_JSON_data = [{ "id": "me5noyjN7YC5C4tKttrbsQw95StTbW680uW7ic32GPdyJR20eejWCZMh42GTsGD8ABGSIvfVodLMKLPGQN5JNZ5dBpijBTLmDNbu" }, ["s1 m1 : first and it is long text brother me5no yjN7YC 5C4tKttrb sQw9 5StTb W68 0uW 7ic32 GPd yJR20 ", "s1 m2 eejWC ZMh42 GTsG D8ABG SIv fVodL MKLPGQ N5JNZ5d BpijB TLm DNbu", "s1 m3 : last"], ["s2 m1  : first/last"], ["s3 m1 :  first", "s3 m2  : last eejWC ZMh42 GTsG D8ABG SIv fVodL MKLPGQ N5JNZ5d BpijB TLm DNbu"]];
+         // auto_replies_JSON_data = [{ "id": "me5noyjN7YC5C4tKttrbsQw95StTbW680uW7ic32GPdyJR20eejWCZMh42GTsGD8ABGSIvfVodLMKLPGQN5JNZ5dBpijBTLmDNbu" }, ["s1 m1 : first and it is long text brother me5no yjN7YC 5C4tKttrb sQw9 5StTb W68 0uW 7ic32 GPd yJR20 ", "s1 m2 eejWC ZMh42 GTsG D8ABG SIv fVodL MKLPGQ N5JNZ5d BpijB TLm DNbu", "s1 m3 : last"], ["s2 m1  : first/last"], ["s3 m1 :  first", "s3 m2  : last eejWC ZMh42 GTsG D8ABG SIv fVodL MKLPGQ N5JNZ5d BpijB TLm DNbu"]];
          // console.log(auto_replies_JSON_data);
       }
 
@@ -132,7 +133,6 @@
                for (let msg_no = 0; msg_no < current_set.length; msg_no++) {
                   const msg = current_set[msg_no];
                   let timeout = time_reserved_for_previous_msg + msg.length * 50;
-                  console.log(`time_reserved_for_previous_msg : ${time_reserved_for_previous_msg} || timeout : ${timeout} || msg length : ${msg.length}`);
                   setTimeout(() => { Write(msg) }, timeout);
                   time_reserved_for_previous_msg = timeout;
                }
