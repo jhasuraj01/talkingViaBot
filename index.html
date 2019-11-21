@@ -45,42 +45,40 @@
    <script>
       let username = null;
       let friendname = null;
-      window.onload = function () {
-         // getting name via url i.e www.example.com?name=friend
-         // task to get 'friend' as name from title
-         // Using URL Class to find the value of the property in url.
-         let params = (new URL(location.href)).searchParams;
+      // getting name via url i.e www.example.com?name=friend
+      // task to get 'friend' as name from title
+      // Using URL Class to find the value of the property in url.
+      let params = (new URL(location.href)).searchParams;
 
-         // user
-         if (params.get('un')) {
-            encrypted_username = params.get('un');
-            let username_encryption_key = encrypted_username.length % 26 > 3 ? encrypted_username.length : 10;
-            username = decrypt(encrypted_username, username_encryption_key);
+      // user
+      if (params.get('un')) {
+         encrypted_username = params.get('un');
+         let username_encryption_key = encrypted_username.length % 26 > 3 ? encrypted_username.length : 10;
+         username = decrypt(encrypted_username, username_encryption_key);
 
-         } else {
-            username = "buddy";
-         }
+      } else {
+         username = "buddy";
+      }
 
-         // sender
-         if (params.get('fn')) {
-            encrypted_friendname = params.get('fn');
-            let friendname_encryption_key = encrypted_friendname.length % 26 > 3 ? encrypted_friendname.length : 10;
-            friendname = document.getElementById('user-name').innerText = decrypt(encrypted_friendname, friendname_encryption_key);
-            // console.log(document.getElementById("user-name"));
-         }
+      // sender
+      if (params.get('fn')) {
+         encrypted_friendname = params.get('fn');
+         let friendname_encryption_key = encrypted_friendname.length % 26 > 3 ? encrypted_friendname.length : 10;
+         friendname = document.getElementById('user-name').innerText = decrypt(encrypted_friendname, friendname_encryption_key);
+         // console.log(document.getElementById("user-name"));
+      }
 
-         currentState("typing...");
-         setTimeout(() => {
-            Write("Aur " + username + " kaisa hai!😏");
-         }, 2000);
-         setTimeout(() => {
-            Write("Aaj tera kaatne ka bohot man kar raha hai....!😆");
-         }, 4000);
-         setTimeout(() => {
-            Write("Ek help Chahiye Kya.....?😎😎");
-            currentState("online");
-         }, 7000);
-      };
+      currentState("typing...");
+      setTimeout(() => {
+         Write("Aur " + username + " kaisa hai!😏");
+      }, 2000);
+      setTimeout(() => {
+         Write("Aaj tera kaatne ka bohot man kar raha hai....!😆");
+      }, 4000);
+      setTimeout(() => {
+         Write("Ek help Chahiye Kya.....?😎😎");
+         currentState("online");
+      }, 7000);
 
       function currentState(str) {
          document.querySelector(".state").innerText = str;
@@ -90,7 +88,7 @@
 
       function put_user_Input() {
          let input_field = document.getElementById('userInput');
-         document.getElementById("chat-bottom").insertAdjacentHTML( 'beforebegin',
+         document.getElementById("chat-bottom").insertAdjacentHTML('beforebegin',
             `<p class="my-message message">${input_field.value}<span class="message-time">${Time()}</span></p>`
          );
          input_field.value = "";
@@ -192,7 +190,7 @@
       }
       function Write(message) {
          let chatBottom = document.getElementById("chat-bottom")
-         chatBottom.insertAdjacentHTML( 'beforebegin', `<p class="friends-message message">${message}<span class="message-time">${Time()}</span></p>`);
+         chatBottom.insertAdjacentHTML('beforebegin', `<p class="friends-message message">${message}<span class="message-time">${Time()}</span></p>`);
          chatBottom.scrollIntoView();
       }
    </script>
