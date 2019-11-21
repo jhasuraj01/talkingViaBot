@@ -46,6 +46,34 @@
    <script src="./encrypt.js"></script>
    <script>
       var username = null;
+      let auto_replies_JSON_data = null;
+
+      let download_auto_replies_JSON_data_fn = (url) => {
+
+         let xmlhttp = new XMLHttpRequest();
+
+         xmlhttp.onreadystatechange = () => {
+            if (this.readyState == 4 && this.status == 200) {
+               let data = JSON.parse(this.responseText);
+               if (data.id === "me5noyjN7YC5C4tKttrbsQw95StTbW680uW7ic32GPdyJR20eejWCZMh42GTsGD8ABGSIvfVodLMKLPGQN5JNZ5dBpijBTLmDNbu") {
+                  auto_replies_JSON_data = data;
+               } else {
+                  console.warn('incorect data downloaded');
+               }
+            }
+            else {
+               console.error(this);
+               console.error(this.readyState);
+            }
+         };
+         xmlhttp.open("GET", url, true);
+         xmlhttp.send();
+
+
+         // auto_replies_JSON_data = [{ "id": "me5noyjN7YC5C4tKttrbsQw95StTbW680uW7ic32GPdyJR20eejWCZMh42GTsGD8ABGSIvfVodLMKLPGQN5JNZ5dBpijBTLmDNbu" }, ["s1 m1 : first and it is long text brother me5no yjN7YC 5C4tKttrb sQw9 5StTb W68 0uW 7ic32 GPd yJR20 ", "s1 m2 eejWC ZMh42 GTsG D8ABG SIv fVodL MKLPGQ N5JNZ5d BpijB TLm DNbu", "s1 m3 : last"], ["s2 m1  : first/last"], ["s3 m1 :  first", "s3 m2  : last eejWC ZMh42 GTsG D8ABG SIv fVodL MKLPGQ N5JNZ5d BpijB TLm DNbu"]];
+         // console.log(auto_replies_JSON_data);
+      }
+
       window.onload = function () {
          // getting name via url i.e www.example.com?name=friend
          // task to get 'friend' as name from title
@@ -70,30 +98,23 @@
             // console.log(document.getElementById("user-name"));
          }
 
-         if(params.get('ct')) {
+         if (params.get('ct')) {
             encrypted_chat_cat_url_encoding = params.get('ct');
             let chat_cat_url_encoding_encryption_key = encrypted_chat_cat_url_encoding.length % 26 > 3 ? encrypted_chat_cat_url_encoding.length : 10;
-            let chat_cat_url_encoding = './preSetReplies' + decrypt(encrypted_chat_cat_url_encoding, chat_cat_url_encoding_encryption_key)
-            console.log(chat_cat_url_encoding);
+            let chat_cat_url_encoding = 'preSetReplies' + decrypt(encrypted_chat_cat_url_encoding, chat_cat_url_encoding_encryption_key)
+            download_auto_replies_JSON_data_fn(chat_cat_url_encoding);
          }
-         currentState("typing...");
-         setTimeout(() => {
-            Write("Aur " + username + " kaisa hai!😏");
-         }, 2000);
-         setTimeout(() => {
-            Write("Aaj tera kaatne ka bohot man kar raha hai....!😆");
-         }, 4000);
-         setTimeout(() => {
-            Write("Ek help Chahiye Kya.....?😎😎");
-            currentState("online");
-         }, 7000);
       };
 
       function currentState(str) {
-         document.querySelector(".state").innerText = str;
+         if (str) {
+            document.querySelector(".state").innerText = str;
+         } else {
+            return document.querySelector(".state").innerText;
+         }
       }
 
-      let numberOfInput = 0;
+      let numberOf_considerable_Input = 0;
 
       function put_user_Input() {
          let input_field = $("#userInput");
@@ -102,84 +123,34 @@
          );
          input_field.val("");
 
-         numberOfInput++;
+         if (currentState() === 'typing...') {
+            Write('listen');
+            return;
+         }
 
-         if (numberOfInput === 1) {
-            setTimeout(() => {
-               currentState("typing...");
-            }, 1000);
-            setTimeout(() => {
-               Write("bsdk lele help lawde..!");
-            }, 3000);
-            setTimeout(() => {
-               Write(
-                  "maine kal jonny uncle ko bohot request kiya, ki kaise bhi madhav ko star bana do.... mera dost hai vo🤩🤩"
-               );
-            }, 8000);
-            setTimeout(() => {
-               Write("usne tera address manga mere se!😉");
-            }, 16000);
-            setTimeout(() => {
-               Write("Aaj John Bhai tere ghar pe aane wala hai....!😜😜😜");
-               currentState("online");
-            }, 20000);
-         } else if (numberOfInput === 2) {
-            setTimeout(() => {
-               currentState("typing...");
-            }, 1000);
-            setTimeout(() => {
-               Write(
-                  "Abe lawde xvideos pe terko trend karwaa dega, chutiye!"
-               );
-            }, 3000);
-            setTimeout(() => {
-               Write(
-                  "tere ghar pe tujhe personally momentum conservation padhaega...😀😀😀"
-               );
-            }, 7000);
-            setTimeout(() => {
-               Write("🤣🤣🤣🤣🤣");
-               currentState("online");
-            }, 9000);
-         } else if (numberOfInput === 3) {
-            setTimeout(() => {
-               currentState("typing...");
-            }, 1000);
-            setTimeout(() => {
-               Write("Chal bye mujhe kaam hai😏");
-            }, 3000);
-            setTimeout(() => {
-               Write("Tu enjoy kar aaj... vo Aa jaaega😍😍");
-            }, 7000);
-            setTimeout(() => {
-               Write("👋👋");
-               currentState("online");
-            }, 9000);
-            setTimeout(() => {
-               currentState("last seen today at " + Time());
-            }, 12000);
-         } else if (numberOfInput === 4) {
-            setTimeout(() => {
-               currentState("online");
-            }, 1000);
-            setTimeout(() => {
-               currentState("typing...");
-            }, 3000);
-            setTimeout(() => {
-               Write(
-                  "abe Chutiye mai suraj nhi hu, jo to itna excited ho raha hai, I am a simple robot created by him...!"
-               );
-            }, 6000);
-            setTimeout(() => {
-               Write("😏😏😏😏😏😏😏");
-            }, 10000);
-            setTimeout(() => {
-               Write("Chal watt👊👊");
-               currentState("online");
-            }, 12000);
-            setTimeout(() => {
-               currentState("last seen today at " + Time());
-            }, 14000);
+         numberOf_considerable_Input++;
+         if (auto_replies_JSON_data) {
+            let current_set = auto_replies_JSON_data[numberOf_considerable_Input];
+            if (current_set) {
+               // set is present to reply to user
+               currentState('typing...');
+               let time_reserved_for_previous_msg = 0;
+               for (let msg_no = 0; msg_no < current_set.length; msg_no++) {
+                  const msg = current_set[msg_no];
+                  let timeout = time_reserved_for_previous_msg + msg.length * 50;
+                  console.log(`time_reserved_for_previous_msg : ${time_reserved_for_previous_msg} || timeout : ${timeout} || msg length : ${msg.length}`);
+                  setTimeout(() => { Write(msg) }, timeout);
+                  time_reserved_for_previous_msg = timeout;
+               }
+               setTimeout(() => { currentState('online') }, time_reserved_for_previous_msg);
+            } else {
+               // no more pre-set replies available;
+               console.warn('no more pre-set replies available');
+               Write ('Bye');
+            }
+         } else {
+            Write('Please wait: let me think 😉');
+            numberOf_considerable_Input--;
          }
       }
 
