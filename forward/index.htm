@@ -21,6 +21,7 @@
          </label>
          <label for="friendname-in">
             Write your friends nick name:
+<<<<<<< HEAD
             <input
                type="text"
                name="friendname-in"
@@ -83,6 +84,35 @@
          let username_in = document.getElementById("username-in");
          let url_copy_alert = document.getElementById("url-copy-alert");
          let url = new URL(`https://the-suraj.github.io/talkingViaBot/`);
+=======
+            <input type="text" name="friendname-in" id="friendname-in" placeholder="Buddy 2">
+        </label>
+        <label  id="chat-cat-lbl">
+            Select chat Catagory:
+        </label>
+        <!-- <a href="#" target="_blank" rel="noopener noreferrer" id="viewDemo_btn">View Demo</a> -->
+        <button id="viewDemo_btn">View Demo</button>
+        <button id="copyURL-btn">COPY URL</button>
+        <p id="url-copy-alert" style="text-align: center;">&nbsp;</p>
+    </main>
+    <label for="url-in">
+        <input type="text" name="url-in" id="url-in" style="position: absolute; top: 0; left: 0; display: none;">
+    </label>
+    <footer class="body-footer">
+        <p>Suraj Jha &copy; 2019 - &infin;, All rights reserved.</p>
+        <p>leave a <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSf7-PKL6oXsjMdDqzk_TyY9UftKPqadK_vdEW3Uy3go32VZrw/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">feedback</a></p>
+        <p>Message me on <a href="https://www.instagram.com/jhasuraj_/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a></p>
+    </footer>
+    <script src="../encrypt.js"></script>
+    <script src="./chat-cat.js"></script>
+    <script>
+        let url_in = document.getElementById('url-in');
+        let friendname_in = document.getElementById('friendname-in');
+        let username_in = document.getElementById('username-in');
+        let url_copy_alert = document.getElementById('url-copy-alert');
+        let url = new URL(`https://the-suraj.github.io/talkingViaBot/`);
+>>>>>>> 7645d59f54c1cf93917fe9c5f37a1b9c876645cd
 
          let create_url = () => {
             /* encrypt Your Name */
@@ -105,8 +135,13 @@
                friendname_encryption_key
             );
 
+            /* get and encrypt  chat_cat_url_encoding*/
+            let chat_cat_url_encoding = create_chat_cat_url_encoding_fn();
+            let chat_cat_url_encoding_encryption_key = chat_cat_url_encoding.length % 26 > 3 ? chat_cat_url_encoding.length : 10;
+            let encrypted_chat_cat_url_encoding =  encrypt(chat_cat_url_encoding, chat_cat_url_encoding_encryption_key);
+
             // set parameters
-            url.search = `fn=${encrypted_username}&un=${encrypted_friendname}`;
+            url.search = `fn=${encrypted_username}&un=${encrypted_friendname}&ct=${encrypted_chat_cat_url_encoding}`;
             return null;
          };
          let copyURLFn = () => {
@@ -126,6 +161,7 @@
             .getElementById("copyURL-btn")
             .addEventListener("click", copyURLFn);
 
+<<<<<<< HEAD
          let remove_text_url_copy_alert = () => {
             url_copy_alert.innerText = "";
          };
@@ -135,6 +171,13 @@
          document
             .getElementById("friendname-in")
             .addEventListener("input", remove_text_url_copy_alert);
+=======
+        let remove_text_url_copy_alert = () => {
+            url_copy_alert.innerText = " ";
+        }
+        document.getElementById('username-in').addEventListener('input', remove_text_url_copy_alert);
+        document.getElementById('friendname-in').addEventListener('input', remove_text_url_copy_alert);
+>>>>>>> 7645d59f54c1cf93917fe9c5f37a1b9c876645cd
 
          let popitup = () => {
             create_url();

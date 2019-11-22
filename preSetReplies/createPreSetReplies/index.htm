@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create Pre set Replies</title>
+    <link rel="stylesheet" href="./createPreSetReplies.css">
+</head>
+
+<body>
+    <header>
+        <h1>Create Pre Set Replies for Your friend</h1>
+        <label for="file-name">
+            File name:
+            <input type="text" id="file-name">
+        </label>
+        <button id="export-btn">EXPORT</button>
+        <label for="open-file-btn" title="Open file from your device" >
+            <button id="open-file-btn" name="open-file-btn">OPEN</button>
+            <input type="file" id="file-in" style="display: none;" accept=".json">
+        </label>
+    </header>
+    <main>
+        <section id="editing-tools">
+            <button id="add-new-msg-in-above-btn">&plus; message &uparrow;</button>
+            <button id="add-new-msg-in-below-btn">&plus; message &downarrow;</button>
+            <button id="add-msg-set-above-btn">&plus; set &uparrow;</button>
+            <button id="add-msg-set-below-btn">&plus; set &downarrow;</button>
+            <button id="delete-msg-in-btn">&#128465; message</button>
+            <button id="delete-msg-set-btn">&#128465; set</button>
+        </section>
+        <section id="message-set-Container">
+            <fieldset class="message-set">
+                <legend class="message-set-header">Message Set</legend>
+                <input type="text" class="message-input">
+            </fieldset>
+        </section>
+    </main>
+
+    <script src="./createPreSetReplies.js"></script>
+    <script src="./exportMessages.js"></script>
+    <script src="./openPreReplies.js"></script>
+</body>
+
+</html>
