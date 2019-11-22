@@ -25,7 +25,14 @@
         <!-- <a href="#" target="_blank" rel="noopener noreferrer" id="viewDemo_btn">View Demo</a> -->
         <button id="viewDemo_btn">View Demo</button>
         <button id="copyURL-btn">COPY URL</button>
-        <p id="url-copy-alert" style="text-align: center;">&nbsp;</p>
+        <div id="url-copy-alert" style="text-align: center;">
+            <p id="url-copy-alert-text">&nbsp;</p>  <!-- space is added to maintain a vertical gap between above and below elemnets -->
+            <!-- 
+                
+                Put Social media buttons here and make it visible to the user when user will click on copy URL button 
+            
+            -->
+        </div>
     </main>
     <label for="url-in">
         <input type="text" name="url-in" id="url-in" style="position: absolute; top: 0; left: 0; display: none;">
@@ -41,7 +48,7 @@
         let url_in = document.getElementById('url-in');
         let friendname_in = document.getElementById('friendname-in');
         let username_in = document.getElementById('username-in');
-        let url_copy_alert = document.getElementById('url-copy-alert');
+        let url_copy_alert_text = document.getElementById('url-copy-alert-text');
         let url = new URL(`https://the-suraj.github.io/talkingViaBot/`);
 
         let create_url = () => {
@@ -69,13 +76,18 @@
             url_in.select();
             document.execCommand('copy');
             url_in.style.display = "none";
-            url_copy_alert.innerText = "Url Copied";
+            url_copy_alert_text.innerText = "Url Copied";
+            //
+            //
+            // call the Social media share function from here
+            //
+            //
             return null;
         }
         document.getElementById("copyURL-btn").addEventListener("click", copyURLFn);
 
         let remove_text_url_copy_alert = () => {
-            url_copy_alert.innerText = " ";
+            url_copy_alert_text.innerText = " "; // space is added to maintain a vertical gap between above and below elemnets
         }
         document.getElementById('username-in').addEventListener('input', remove_text_url_copy_alert);
         document.getElementById('friendname-in').addEventListener('input', remove_text_url_copy_alert);
