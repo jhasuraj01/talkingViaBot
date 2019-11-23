@@ -118,7 +118,7 @@
 
             // Trigger for share button if user copyies URL
             document.getElementsByClassName("share-holder")[0].style.display = "flex";
-            document.getElementById('barcode').src = `https://api.qrserver.com/v1/create-qr-code/?data='${encodeURIComponent(url.href)}'`;
+            document.getElementById('barcode').src = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(url.href)}`;
 
             if (!navigator.share) display_custom_btn();
             return null;
