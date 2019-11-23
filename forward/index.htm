@@ -37,7 +37,7 @@
             </button>
             OR
             <button class="share-btn" onclick="show_qr()">
-               <img class="share-svg" src="../forward/logos/scan-logo.png" alt="git-logo" />
+               <img class="share-svg" src="../forward/logos/share.svg" alt="git-logo" />
                <span class="btn-text">Scan</span>
             </button>
          </div>
@@ -192,7 +192,7 @@
 
       function show_qr() {
          let bcode = document.getElementById('barcode');
-         document.getElementsByClassName('qr-holder')[0].style.display = 'flex';
+         document.getElementsByClassName('qr-holder')[0].style.display = 'flex'
          linkset.style.display = "none";
 
          bcode.src = "https://api.qrserver.com/v1/create-qr-code/?data=" + url_in.value;
