@@ -51,7 +51,7 @@ let addCatagory = (eve) => {
     }
 
     // remove text copied alert if it is present there
-    if (typeof remove_text_url_copy_alert === 'function') remove_text_url_copy_alert();
+    if (typeof hide_url_copy_alert === 'function') hide_url_copy_alert();
 
     let sub_cat = {
         elm: null,
