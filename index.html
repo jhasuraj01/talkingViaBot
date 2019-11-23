@@ -48,14 +48,14 @@
 
          console.log(url);
          let xmlhttp = new XMLHttpRequest();
-
          xmlhttp.onreadystatechange = () => {
-            if (this.readyState == 4 && this.status == 200) {
-               let data = JSON.parse(this.responseText);
-               console.log(data);
-               if (data.id === "me5noyjN7YC5C4tKttrbsQw95StTbW680uW7ic32GPdyJR20eejWCZMh42GTsGD8ABGSIvfVodLMKLPGQN5JNZ5dBpijBTLmDNbu") {
+         console.log(xmlhttp);
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+               // request is successful and Json data is received successfully
+               let data = JSON.parse(xmlhttp.responseText);
+               if (data[0].id === "me5noyjN7YC5C4tKttrbsQw95StTbW680uW7ic32GPdyJR20eejWCZMh42GTsGD8ABGSIvfVodLMKLPGQN5JNZ5dBpijBTLmDNbu") {
                   auto_replies_JSON_data = data;
-                  console.log(auto_replies_JSON_data);
+                  // console.log(auto_replies_JSON_data);
                } else {
                   console.warn('incorect data downloaded');
                }
