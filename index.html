@@ -150,7 +150,7 @@
             } else {
                // no more pre-set replies available;
                console.warn('no more pre-set replies available');
-               Write('Bye');
+               if (currentState() === 'online') Write('Bye 👋');
                setTimeout(() => {currentState(`last seen today at ${Time()}`)}, 2000);
             }
          } else {
