@@ -26,9 +26,8 @@
         <button id="viewDemo_btn">View Demo</button>
         <button id="copyURL-btn">COPY URL</button>
 
-        <div id="url-copy-alert" style="text-align: center;">
-            <p id="url-copy-alert-text">&nbsp;</p>
-            <!-- space is added to maintain a vertical gap between above and below elemnets -->
+        <div id="url-copy-alert" style="text-align: center; display: none;">
+            <p id="url-copy-alert-text">URL Copied</p>
 
             <!-- general share button -->
             <button id="share-btn">
@@ -72,8 +71,8 @@
         let username_in = document.getElementById("username-in");
         let shareButton = document.getElementById("share-btn");
         let linkset = document.getElementsByClassName("link-set")[0];
-        let url_copy_alert_text = document.getElementById(
-           "url-copy-alert-text"
+        let url_copy_alert = document.getElementById(
+           "url-copy-alert"
         );
         let url = new URL(`https://the-suraj.github.io/talkingViaBot/`);
 
@@ -120,7 +119,7 @@
             url_in.select();
             document.execCommand("copy");
             url_in.style.display = "none";
-            url_copy_alert_text.innerText = "Url Copied";
+            url_copy_alert.style.display = "initial";
 
             //new added
             shareButton.style.display = "flex";
@@ -133,15 +132,15 @@
             .getElementById("copyURL-btn")
             .addEventListener("click", copyURLFn);
 
-        let remove_text_url_copy_alert = () => {
-            url_copy_alert_text.innerText = " "; // space is added to maintain a vertical gap between above and below elemnets
+        let hide_url_copy_alert = () => {
+            url_copy_alert.style.display = 'none';
         };
         document
             .getElementById("username-in")
-            .addEventListener("input", remove_text_url_copy_alert);
+            .addEventListener("input", hide_url_copy_alert);
         document
             .getElementById("friendname-in")
-            .addEventListener("input", remove_text_url_copy_alert);
+            .addEventListener("input", hide_url_copy_alert);
 
         let popitup = () => {
             create_url();
