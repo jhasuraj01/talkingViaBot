@@ -6,7 +6,7 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <title>Chat Bot</title>
    <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <link rel="stylesheet" href="./main.mini.css" />
+   <link rel="stylesheet" href="./main.css" />
 </head>
 
 <body>
@@ -15,8 +15,10 @@
       <div class="user-profile"></div>
       <div class="user-name" id="user-name">Friend</div>
       <div class="state">online</div>
-      <button class="menu-dots">&#x22EE;</button>
-      <div class="menu">
+      <label for="menu-dots-btn">
+         <button class="menu-dots" id="menu-dots-btn">&#x22EE;</button>
+      </label>
+      <div class="menu" id="menu-container">
          <p>View contact</p>
          <p>Media</p>
          <p>Search</p>
@@ -43,7 +45,7 @@
    <script>
       var username = null;
       let auto_replies_JSON_data = null;
-      let default_auto_replies_JSON_data = [{"id":"me5noyjN7YC5C4tKttrbsQw95StTbW680uW7ic32GPdyJR20eejWCZMh42GTsGD8ABGSIvfVodLMKLPGQN5JNZ5dBpijBTLmDNbu"},["Hey nice to see you here","This website is currently under development","Kindly visit later"],["Bye","Don't forget to visit later","Take Care😊"],["trial url: https://the-suraj.github.io/talkingViaBot/preSetReplies/festival/holi/double.json"]];
+      let default_auto_replies_JSON_data = [{ "id": "me5noyjN7YC5C4tKttrbsQw95StTbW680uW7ic32GPdyJR20eejWCZMh42GTsGD8ABGSIvfVodLMKLPGQN5JNZ5dBpijBTLmDNbu" }, ["Hey nice to see you here", "This website is currently under development", "Kindly visit later"], ["Bye", "Don't forget to visit later", "Take Care😊"], ["trial url: https://the-suraj.github.io/talkingViaBot/preSetReplies/festival/holi/double.json"]];
       let Bot_typingSpeed = 50; /* 1 letter in 50 ms */
       let download_auto_replies_JSON_data_fn = (url) => {
 
@@ -152,7 +154,7 @@
                // no more pre-set replies available;
                console.warn('no more pre-set replies available');
                if (currentState() === 'online') Write('Bye 👋');
-               setTimeout(() => {currentState(`last seen today at ${Time()}`)}, 2000);
+               setTimeout(() => { currentState(`last seen today at ${Time()}`) }, 2000);
             }
          } else {
             Write('Please wait: let me think 😉');
