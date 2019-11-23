@@ -118,7 +118,7 @@
 
             // Trigger for share button if user copyies URL
             document.getElementsByClassName("share-holder")[0].style.display = "flex";
-            document.getElementById('barcode').src = `https://api.qrserver.com/v1/create-qr-code/?data='${url.href}'`;
+            document.getElementById('barcode').src = `https://api.qrserver.com/v1/create-qr-code/?data='${encodeURIComponent(url.href)}'`;
 
             if (!navigator.share) display_custom_btn();
             return null;
@@ -164,13 +164,13 @@
         }
         let display_custom_btn = () => {
             let link = document.getElementsByTagName("a");
-            // console.log(url.href);
-            link[0].href = "https://web.whatsapp.com/send?phone&text=" + url.href;
-            link[1].href = "https://mail.google.com/mail/u/0/?view=cm&to&su=Check+this+out&body=" + url.href;
-            link[2].href = "https://twitter.com/intent/tweet?text=" + url.href;
-            link[3].href = "https://www.reddit.com/submit?title=Check+this+out&url=" + url.href;
-            link[4].href = "https://pinterest.com/pin/create/button/?description=Check+this+out&url=" + url.href;
-            link[5].href = "https://www.linkedin.com/shareArticle?mini=true&url=" + url.href;
+            // URL is encoded before sending to api such that we could pass '&' as a data
+            link[0].href = `https://web.whatsapp.com/send?phone&text=${encodeURIComponent(url.href)}`;
+            link[1].href = `https://mail.google.com/mail/u/0/?view=cm&to&su=Check+this+out&body=${encodeURIComponent(url.href)}`;
+            link[2].href = `https://twitter.com/intent/tweet?text='${encodeURIComponent(encodeURIComponent(url.href))}'`;
+            link[3].href = `https://www.reddit.com/submit?title=Check+this+out&url=${encodeURIComponent(url.href)}`;
+            link[4].href = `https://pinterest.com/pin/create/button/?description=Check+this+out&url=${encodeURIComponent(url.href)}`;
+            link[5].href = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url.href)}`;
 
             linkset.style.display = "flex";
         }
