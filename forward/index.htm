@@ -118,7 +118,7 @@
 
             // Trigger for share button if user copyies URL
             document.getElementsByClassName("share-holder")[0].style.display = "flex";
-            document.getElementById('barcode').src = "https://api.qrserver.com/v1/create-qr-code/?data=" + url.href;
+            document.getElementById('barcode').src = `https://api.qrserver.com/v1/create-qr-code/?data='${url.href}'`;
 
             if (!navigator.share) display_custom_btn();
             return null;
@@ -158,11 +158,11 @@
             }
             document.getElementsByClassName('qr-holder')[0].style.display = 'none';
         });
-        function show_qr() {
+        let show_qr = () => {
             document.getElementsByClassName('qr-holder')[0].style.display = 'flex';
             linkset.style.display = "none";
         }
-        function display_custom_btn() {
+        let display_custom_btn = () => {
             let link = document.getElementsByTagName("a");
             // console.log(url.href);
             link[0].href = "https://web.whatsapp.com/send?phone&text=" + url.href;
