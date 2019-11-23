@@ -43,36 +43,41 @@
    <script>
       var username = null;
       let auto_replies_JSON_data = null;
+      let default_auto_replies_JSON_data = [{"id":"me5noyjN7YC5C4tKttrbsQw95StTbW680uW7ic32GPdyJR20eejWCZMh42GTsGD8ABGSIvfVodLMKLPGQN5JNZ5dBpijBTLmDNbu"},["Hey nice to see you here","This website is currently under development","Kindly visit later"],["Bye","Don't forget to visit later","Take Care😊"],["trial url: https://the-suraj.github.io/talkingViaBot/preSetReplies/festival/holi/double.json"]];
 
       let download_auto_replies_JSON_data_fn = (url) => {
 
          console.log(url);
          let xmlhttp = new XMLHttpRequest();
          xmlhttp.onreadystatechange = () => {
-         console.log(xmlhttp);
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-               // request is successful and Json data is received successfully
+            if (xmlhttp.readyState == 0) console.log('RESPONSE UNSENT: Client has been created. open() not called yet.');
+            else if (xmlhttp.readyState == 1) console.log('RESPONSE OPENED: open() has been called.');
+            else if (xmlhttp.readyState == 2) console.log('RESPONSE HEADERS_RECEIVED: send() has been called, and headers and status are available.');
+            else if (xmlhttp.readyState == 3) console.log('RESPONSE LOADING: Downloading responseText holds partial data.');
+            else if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+               console.log('RESPONSE DONE: The operation is complete.'); /* request is successful and Json data is received successfully */
                let data = JSON.parse(xmlhttp.responseText);
                if (data[0].id === "me5noyjN7YC5C4tKttrbsQw95StTbW680uW7ic32GPdyJR20eejWCZMh42GTsGD8ABGSIvfVodLMKLPGQN5JNZ5dBpijBTLmDNbu") {
                   auto_replies_JSON_data = data;
-                  // console.log(auto_replies_JSON_data);
+                  console.log("Correct JSON data is successfully downloaded");
                } else {
-                  console.warn('incorect data downloaded');
+                  console.warn('Incorrect JSON data is successfully downloaded');
                }
             }
+            else if (xmlhttp.status == 404) {
+               console.error('JSON File not found'); /* JSON File not found */
+               auto_replies_JSON_data = default_auto_replies_JSON_data;
+            }
+            else if (xmlhttp.status == 401 || xmlhttp.status == 403) {
+               console.error('request is forbidden by the server'); /* request is forbidden by the server */
+               auto_replies_JSON_data = default_auto_replies_JSON_data;
+            }
             else {
-               // console.error(this);
-               // console.error(this.readyState);
-               console.error('some error in loading file');
-               auto_replies_JSON_data = [{"id":"me5noyjN7YC5C4tKttrbsQw95StTbW680uW7ic32GPdyJR20eejWCZMh42GTsGD8ABGSIvfVodLMKLPGQN5JNZ5dBpijBTLmDNbu"},["Hey nice to see you here","This website is currently under development","Kindly visit later"],["Bye","Don't forget to visit later","Take Care😊"],["trial url: https://the-suraj.github.io/talkingViaBot/preSetReplies/festival/holi/double.json"]];
-
+               console.error(`Some unexpected error occured -> Ready State:${xmlhttp.readyState}, Status:${xmlhttp.status}`);
             }
          };
          xmlhttp.open("GET", url, true);
          xmlhttp.send();
-
-
-         // console.log(auto_replies_JSON_data);
       }
 
       // getting name via url i.e www.example.com?name=friend
@@ -160,14 +165,10 @@
          let date = new Date();
          let time;
          if (date.getHours() > 12) {
-            time = `${("00" + (date.getHours() - 12)).substr(-2)}:${(
-               "00" + date.getMinutes()
-            ).substr(-2)} pm`;
+            time = `${("00" + (date.getHours() - 12)).substr(-2)}:${("00" + date.getMinutes()).substr(-2)} pm`;
             return time;
          }
-         time = `${("00" + date.getHours()).substr(-2)}:${(
-            "00" + date.getMinutes()
-         ).substr(-2)} am`;
+         time = `${("00" + date.getHours()).substr(-2)}:${("00" + date.getMinutes()).substr(-2)} am`;
          return time;
       }
       function Write(message) {
