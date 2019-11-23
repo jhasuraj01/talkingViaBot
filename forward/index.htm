@@ -146,12 +146,13 @@
 
         function display_custom_btn() {
             let link = document.getElementsByTagName("a");
-            link[0].href = "https://web.whatsapp.com/send?phone&text=" + url_in.value;
-            link[1].href = "https://mail.google.com/mail/u/0/?view=cm&to&su=Check+this+out&body=" + url_in.value;
-            link[2].href = "https://twitter.com/intent/tweet?text=" + url_in.value;
-            link[3].href = "https://www.reddit.com/submit?title=Check+this+out&url=" + url_in.value;
-            link[4].href = "https://pinterest.com/pin/create/button/?description=Check+this+out&url=" + url_in.value;
-            link[5].href = "https://www.linkedin.com/shareArticle?mini=true&url=" + url_in.value;
+            console.log(url.href);
+            link[0].href = "https://web.whatsapp.com/send?phone&text=" + url.href;
+            link[1].href = "https://mail.google.com/mail/u/0/?view=cm&to&su=Check+this+out&body=" + url.href;
+            link[2].href = "https://twitter.com/intent/tweet?text=" + url.href;
+            link[3].href = "https://www.reddit.com/submit?title=Check+this+out&url=" + url.href;
+            link[4].href = "https://pinterest.com/pin/create/button/?description=Check+this+out&url=" + url.href;
+            link[5].href = "https://www.linkedin.com/shareArticle?mini=true&url=" + url.href;
 
             linkset.style.display = "flex";
         }
