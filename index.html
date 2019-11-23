@@ -59,6 +59,7 @@
                let data = JSON.parse(xmlhttp.responseText);
                if (data[0].id === "me5noyjN7YC5C4tKttrbsQw95StTbW680uW7ic32GPdyJR20eejWCZMh42GTsGD8ABGSIvfVodLMKLPGQN5JNZ5dBpijBTLmDNbu") {
                   auto_replies_JSON_data = data;
+                  if (numberOf_considerable_Input) numberOf_considerable_Input = 0; /* resetting it considering the posibility of user chating before the JSON file is loaded */
                   console.log("Correct JSON data is successfully downloaded");
                } else {
                   console.warn('Incorrect JSON data is successfully downloaded');
