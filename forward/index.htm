@@ -142,6 +142,8 @@
 
          // Trigger for share button if user copyies URL
          document.getElementsByClassName("share-holder")[0].style.display = "flex";
+         document.getElementById('barcode').src = "https://api.qrserver.com/v1/create-qr-code/?data=" + url_in.value;
+
          if (!navigator.share) display_custom_btn();
          return null;
       };
@@ -186,16 +188,13 @@
             console.log("native share not supported");
             display_custom_btn();
          }
-         document.getElementById('barcode').style.display = 'none';
+         document.getElementsByClassName('qr-holder')[0].style.display = 'none';
 
       });
 
       function show_qr() {
-         let bcode = document.getElementById('barcode');
-         document.getElementsByClassName('qr-holder')[0].style.display = 'flex'
+         document.getElementsByClassName('qr-holder')[0].style.display = 'flex';
          linkset.style.display = "none";
-
-         bcode.src = "https://api.qrserver.com/v1/create-qr-code/?data=" + url_in.value;
       }
       function display_custom_btn() {
          let link = document.getElementsByTagName("a");
