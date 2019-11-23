@@ -141,7 +141,8 @@
                currentState('typing...');
                let time_reserved_for_previous_msg = 0;
                for (let msg_no = 0; msg_no < current_set.length; msg_no++) {
-                  const msg = current_set[msg_no];
+                  /* {name} is used in the JSON file to spacify the position where friends name must be used in the chat */
+                  const msg = current_set[msg_no].replace('{name}', username);
                   let timeout = time_reserved_for_previous_msg + msg.length * Bot_typingSpeed;
                   setTimeout(() => { Write(msg) }, timeout);
                   time_reserved_for_previous_msg = timeout;
