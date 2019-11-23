@@ -2,221 +2,179 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-   <title>Forward to friends</title>
-   <link rel="stylesheet" href="./style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Forward to friends</title>
+    <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-   <main>
-      <label for="username-in">
-         Write your name:
-         <input type="text" name="username-in" id="username-in" placeholder="Buddy 1" />
-      </label>
-      <label for="friendname-in">
-         Write your friends nick name:
-         <input type="text" name="friendname-in" id="friendname-in" placeholder="Buddy 2" />
-      </label>
-      <label id="chat-cat-lbl">
-         Select chat Catagory:
-      </label>
-      <!-- <a href="#" target="_blank" rel="noopener noreferrer" id="viewDemo_btn">View Demo</a> -->
-      <button id="viewDemo_btn">View Demo</button>
-      <button id="copyURL-btn">COPY URL</button>
+    <main>
+        <label for="username-in">
+            Write your name:
+            <input type="text" name="username-in" id="username-in" placeholder="Buddy 1" />
+        </label>
+        <label for="friendname-in">
+            Write your friends nick name:
+            <input type="text" name="friendname-in" id="friendname-in" placeholder="Buddy 2" />
+        </label>
+        <label id="chat-cat-lbl">
+            Select chat Catagory:
+        </label>
+        <!-- <a href="#" target="_blank" rel="noopener noreferrer" id="viewDemo_btn">View Demo</a> -->
+        <button id="viewDemo_btn">View Demo</button>
+        <button id="copyURL-btn">COPY URL</button>
 
-      <div id="url-copy-alert" style="text-align: center; display: none;">
-         <p id="url-copy-alert-text">URL Copied</p>
+        <div id="url-copy-alert" style="text-align: center; display: none;">
+            <p id="url-copy-alert-text">URL Copied</p>
 
-         <!-- general share button -->
-         <div class="share-holder">
-            <button class="share-btn">
-               <img class="share-svg" src="../forward/logos/share.svg" alt="git-logo" />
-               <span class="btn-text">Share</span>
-            </button>
-            OR
-            <button class="share-btn" onclick="show_qr()">
-               <img class="share-svg" src="../forward/logos/scan-logo.png" alt="git-logo" />
-               <span class="btn-text">Scan</span>
-            </button>
-         </div>
+            <!-- general share button -->
+            <div class="share-holder" style="display: flex;">
+                <button class="share-btn">
+                    <img class="share-svg" src="../forward/logos/share.svg" alt="git-logo" />
+                    <span class="btn-text">Share</span>
+                </button>
+                OR
+                <button class="share-btn" onclick="show_qr()">
+                    <img class="share-svg" src="../forward/logos/scan-logo.png" alt="git-logo" />
+                    <span class="btn-text">Scan</span>
+                </button>
+            </div>
 
-         <div class="link-set">
-            <a href="https://web.whatsapp.com/send?phone&text='whatsapp'" target="_blank" rel="noopener noreferrer">
-               <img style="background-color:#25d366;" src="../forward/logos/whatsapp.svg" alt="whatsapp-logo" />
-            </a>
-            <a href="https://mail.google.com/mail/u/0/?view=cm&to&su=subject&body=mail body" target="_blank"
-               rel="noopener noreferrer">
-               <img style="background-color:#ea4335;" src="../forward/logos/gmail.svg" alt="gmail-logo" />
-            </a>
-            <a href="https://twitter.com/intent/tweet?text=twitter" target="_blank" rel="noopener noreferrer">
-               <img style="background-color:#1da1f2;" src="../forward/logos/twitter.svg" alt="twitter-logo" />
-            </a>
-            <a href="https://www.reddit.com/submit?title=Check this out&url=ourUrl" target="_blank"
-               rel="noopener noreferrer">
-               <img style="background-color:#ff4500;" src="../forward/logos/reddit.svg" alt="reddit-logo" />
-            </a>
-            <a href="https://pinterest.com/pin/create/button/?description=title&url=our url" target="_blank"
-               rel="noopener noreferrer">
-               <img style="background-color:#bd081c;" src="../forward/logos/pinterest.svg" alt="pinterest-logo" />
-            </a>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url=ourUrl" target="_blank"
-               rel="noopener noreferrer">
-               <img style="background-color:#0077b5;" src="../forward/logos/linkedin.svg" alt="linkedin-logo" />
-            </a>
-         </div>
-         <!-- qrcode viewer -->
-         <div class="qr-holder">
-            <img id='barcode' src="../forward/logos/download.png" alt="qrcode" title="Scan to visit" />
-         </div>
-      </div>
-   </main>
-   <label for="url-in">
-      <input type="text" name="url-in" id="url-in" style="position: absolute; top: 0; left: 0; display: none;" />
-   </label>
-   <footer class="body-footer">
-      <p>Suraj Jha &copy; 2019 - &infin;, All rights reserved.</p>
-      <p>
-         leave a
-         <a href="https://docs.google.com/forms/d/e/1FAIpQLSf7-PKL6oXsjMdDqzk_TyY9UftKPqadK_vdEW3Uy3go32VZrw/viewform?usp=sf_link"
-            target="_blank" rel="noopener noreferrer">feedback</a>
-      </p>
-   </footer>
-   <script src="../encrypt.js"></script>
-   <script src="./chat-cat.js"></script>
-   <script>
-      let url_in = document.getElementById("url-in");
-      let friendname_in = document.getElementById("friendname-in");
-      let username_in = document.getElementById("username-in");
-      let shareButton = document.getElementsByClassName("share-btn");
-      let linkset = document.getElementsByClassName("link-set")[0];
-      let url_copy_alert = document.getElementById("url-copy-alert");
-      let url = new URL(`https://the-suraj.github.io/talkingViaBot/`);
+            <div class="link-set">
+                <a href="https://web.whatsapp.com/send?phone&text='whatsapp'" target="_blank" rel="noopener noreferrer">
+                    <img style="background-color:#25d366;" src="../forward/logos/whatsapp.svg" alt="whatsapp-logo" />
+                </a>
+                <a href="https://mail.google.com/mail/u/0/?view=cm&to&su=subject&body=mail body"  target="_blank" rel="noopener noreferrer">
+                    <img style="background-color:#ea4335;" src="../forward/logos/gmail.svg" alt="gmail-logo" />
+                </a>
+                <a href="https://twitter.com/intent/tweet?text=twitter"  target="_blank" rel="noopener noreferrer">
+                    <img style="background-color:#1da1f2;" src="../forward/logos/twitter.svg" alt="twitter-logo" />
+                </a>
+                <a href="https://www.reddit.com/submit?title=Check this out&url=ourUrl"  target="_blank" rel="noopener noreferrer">
+                    <img style="background-color:#ff4500;" src="../forward/logos/reddit.svg" alt="reddit-logo" />
+                </a>
+                <a href="https://pinterest.com/pin/create/button/?description=title&url=our url"  target="_blank" rel="noopener noreferrer">
+                    <img style="background-color:#bd081c;" src="../forward/logos/pinterest.svg" alt="pinterest-logo" />
+                </a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=ourUrl"  target="_blank" rel="noopener noreferrer">
+                    <img style="background-color:#0077b5;" src="../forward/logos/linkedin.svg" alt="linkedin-logo" />
+                </a>
+            </div>
+            <!-- QR code viewer -->
+            <div class="qr-holder">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?data=HelloWorld" alt="QR Code" id="barcode" title="Scan to visit">
+            </div>
+        </div>
+    </main>
+    <label for="url-in">
+        <input type="text" name="url-in" id="url-in" style="position: absolute; top: 0; left: 0; display: none;" />
+    </label>
+    <footer class="body-footer">
+        <p>Suraj Jha &copy; 2019 - &infin;, All rights reserved.</p>
+        <p>leave a <a href="https://docs.google.com/forms/d/e/1FAIpQLSf7-PKL6oXsjMdDqzk_TyY9UftKPqadK_vdEW3Uy3go32VZrw/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">feedback</a></p>
+    </footer>
+    <script src="../encrypt.js"></script>
+    <script src="./chat-cat.js"></script>
+    <script>
+        let url_in = document.getElementById("url-in");
+        let friendname_in = document.getElementById("friendname-in");
+        let username_in = document.getElementById("username-in");
+        let shareButton = document.getElementsByClassName("share-btn");
+        let linkset = document.getElementsByClassName("link-set")[0];
+        let url_copy_alert = document.getElementById("url-copy-alert");
+        let url = new URL(`${window.location.origin}/talkingViaBot/`);
 
-      let create_url = () => {
-         /* encrypt Your Name */
-         let username_encryption_key =
-            username_in.value.length % 26 > 3
-               ? username_in.value.length
-               : 10;
-         let encrypted_username = encrypt(
-            username_in.value,
-            username_encryption_key
-         );
+        let create_url = () => {
+            /* encrypt Your Name */
+            let username_encryption_key =
+                username_in.value.length % 26 > 3 ? username_in.value.length : 10;
+            let encrypted_username = encrypt(username_in.value, username_encryption_key);
 
-         /* encrypt friends name */
-         let friendname_encryption_key =
-            friendname_in.value.length % 26 > 3
-               ? friendname_in.value.length
-               : 10;
-         let encrypted_friendname = encrypt(
-            friendname_in.value,
-            friendname_encryption_key
-         );
+            /* encrypt friends name */
+            let friendname_encryption_key =
+                friendname_in.value.length % 26 > 3 ? friendname_in.value.length : 10;
+            let encrypted_friendname = encrypt(friendname_in.value, friendname_encryption_key);
 
-         /* get and encrypt  chat_cat_url_encoding*/
-         let chat_cat_url_encoding = create_chat_cat_url_encoding_fn();
-         let chat_cat_url_encoding_encryption_key =
-            chat_cat_url_encoding.length % 26 > 3
-               ? chat_cat_url_encoding.length
-               : 10;
-         let encrypted_chat_cat_url_encoding = encrypt(
-            chat_cat_url_encoding,
-            chat_cat_url_encoding_encryption_key
-         );
+            /* get and encrypt  chat_cat_url_encoding*/
+            let chat_cat_url_encoding = create_chat_cat_url_encoding_fn();
+            let chat_cat_url_encoding_encryption_key =
+                chat_cat_url_encoding.length % 26 > 3 ? chat_cat_url_encoding.length : 10;
+            let encrypted_chat_cat_url_encoding = encrypt(chat_cat_url_encoding, chat_cat_url_encoding_encryption_key);
 
-         // set parameters
-         url.search = `fn=${encrypted_username}&un=${encrypted_friendname}&ct=${encrypted_chat_cat_url_encoding}`;
-         return null;
-      };
-      let copyURLFn = () => {
-         create_url();
-         url_in.value = url.href;
-         url_in.style.display = "block";
-         url_in.select();
-         document.execCommand("copy");
-         url_in.style.display = "none";
-         url_copy_alert.style.display = "initial";
+            // set parameters
+            url.search = `fn=${encrypted_username}&un=${encrypted_friendname}&ct=${encrypted_chat_cat_url_encoding}`;
+            return null;
+        };
+        let copyURLFn = () => {
+            create_url();
+            url_in.value = url.href;
+            url_in.style.display = "block";
+            url_in.select();
+            document.execCommand("copy");
+            url_in.style.display = "none";
+            url_copy_alert.style.display = "initial";
 
-         // Trigger for share button if user copyies URL
-         document.getElementsByClassName("share-holder")[0].style.display = "flex";
-         document.getElementById('barcode').src = "https://api.qrserver.com/v1/create-qr-code/?data=" + url_in.value;
+            // Trigger for share button if user copyies URL
+            document.getElementsByClassName("share-holder")[0].style.display = "flex";
+            document.getElementById('barcode').src = "https://api.qrserver.com/v1/create-qr-code/?data=" + url.href;
 
-         if (!navigator.share) display_custom_btn();
-         return null;
-      };
-      document
-         .getElementById("copyURL-btn")
-         .addEventListener("click", copyURLFn);
+            if (!navigator.share) display_custom_btn();
+            return null;
+        };
+        document.getElementById("copyURL-btn").addEventListener("click", copyURLFn);
 
-      let hide_url_copy_alert = () => {
-         url_copy_alert.style.display = "none";
-      };
-      document
-         .getElementById("username-in")
-         .addEventListener("input", hide_url_copy_alert);
-      document
-         .getElementById("friendname-in")
-         .addEventListener("input", hide_url_copy_alert);
+        let hide_url_copy_alert = () => {
+            url_copy_alert.style.display = 'none';
+        };
+        document.getElementById("username-in").addEventListener("input", hide_url_copy_alert);
+        document.getElementById("friendname-in").addEventListener("input", hide_url_copy_alert);
 
-      let popitup = () => {
-         create_url();
-         let windowName = "chat Box";
-         newwindow = window.open(url, windowName, `height=500,width=300`);
-         if (window.focus) newwindow.focus();
-         return false;
-      };
-      document
-         .getElementById("viewDemo_btn")
-         .addEventListener("click", popitup);
+        let popitup = () => {
+            create_url();
+            let windowName = "chat Box";
+            newwindow = window.open(url, windowName, `height=500,width=300`);
+            if (window.focus) newwindow.focus();
+            return false;
+        };
+        document.getElementById("viewDemo_btn").addEventListener("click", popitup);
 
-      // share button native support
-      shareButton[0].addEventListener("click", event => {
-         if (navigator.share) {
-            navigator
-               .share({
-                  title: "Talking via bot",
-                  url: url_in.value
-               })
-               .then(() => {
-                  console.log("Thanks for sharing!");
-               })
-               .catch(console.error);
-         } else {
-            console.log("native share not supported");
-            display_custom_btn();
-         }
-         document.getElementsByClassName('qr-holder')[0].style.display = 'none';
+        // share button native support
+        shareButton[0].addEventListener("click", event => {
+            if (navigator.share) {
+                navigator
+                    .share ({
+                        title: "Talking via bot",
+                        url: url_in.value
+                    })
+                    .then(() => {
+                            console.log("Thanks for sharing!");
+                    })
+                    .catch(console.error);
+            } else {
+                console.log("native share not supported");
+                display_custom_btn();
+            }
+            document.getElementsByClassName('qr-holder')[0].style.display = 'none';
+        });
+        function show_qr() {
+            document.getElementsByClassName('qr-holder')[0].style.display = 'flex';
+            linkset.style.display = "none";
+        }
+        function display_custom_btn() {
+            let link = document.getElementsByTagName("a");
+            // console.log(url.href);
+            link[0].href = "https://web.whatsapp.com/send?phone&text=" + url.href;
+            link[1].href = "https://mail.google.com/mail/u/0/?view=cm&to&su=Check+this+out&body=" + url.href;
+            link[2].href = "https://twitter.com/intent/tweet?text=" + url.href;
+            link[3].href = "https://www.reddit.com/submit?title=Check+this+out&url=" + url.href;
+            link[4].href = "https://pinterest.com/pin/create/button/?description=Check+this+out&url=" + url.href;
+            link[5].href = "https://www.linkedin.com/shareArticle?mini=true&url=" + url.href;
 
-      });
-
-      function show_qr() {
-         document.getElementsByClassName('qr-holder')[0].style.display = 'flex';
-         linkset.style.display = "none";
-      }
-      function display_custom_btn() {
-         let link = document.getElementsByTagName("a");
-         //console.log(url.href);
-         link[0].href =
-            "https://web.whatsapp.com/send?phone&text=" + url.href;
-         link[1].href =
-            "https://mail.google.com/mail/u/0/?view=cm&to&su=Check+this+out&body=" +
-            url.href;
-         link[2].href = "https://twitter.com/intent/tweet?text=" + url.href;
-         link[3].href =
-            "https://www.reddit.com/submit?title=Check+this+out&url=" +
-            url.href;
-         link[4].href =
-            "https://pinterest.com/pin/create/button/?description=Check+this+out&url=" +
-            url.href;
-         link[5].href =
-            "https://www.linkedin.com/shareArticle?mini=true&url=" +
-            url.href;
-
-         linkset.style.display = "flex";
-      }
-   </script>
+            linkset.style.display = "flex";
+        }
+    </script>
 </body>
 
 </html>
