@@ -39,7 +39,7 @@ img {
    background: gray;
    color: white;
    margin-top: -8px;
-   margin: 30px auto 30px auto;
+   margin: 30px 10px 30px 10px;
    cursor: pointer;
 }
 button:active {
@@ -60,12 +60,15 @@ a:hover {
    display: inline;
    margin-top: -14px;
 }
-.qr-holder{
-width: 100%;
-display: none;
-justify-content: center;
-align-items: center;
-margin: 6px;
+#qrcode{
+   display: none;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+}
+#qrcode>img{
+height: 200px;
+width: 200px;
 }
 #barcode{
    height: 200px;
