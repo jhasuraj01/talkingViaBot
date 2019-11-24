@@ -150,7 +150,7 @@
             if (navigator.share) {
                 navigator
                     .share({
-                        title: "Talking via bot",
+                        title: 'Check this out!',
                         url: url_in.value
                     })
                     .then(() => {
@@ -169,8 +169,8 @@
             linkset.style.display = "none";
         }
         function makeCode() {
-
-            qrcode.makeCode(encodeURIComponent(url.href));
+            //alert(url_in.value);
+            qrcode.makeCode(url_in.value);
         }
         let display_custom_btn = () => {
             let link = document.getElementsByTagName("a");
